@@ -6,8 +6,6 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Player Stats")]
     [SerializeField]
-    private float gravityValue = -9.81f;
-    [SerializeField]
     private float playerSpeed = 20f;
 
     private CharacterController controller;
