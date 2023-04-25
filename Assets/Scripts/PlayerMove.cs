@@ -7,8 +7,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 20f;
     private CharacterController controller;
-    private Vector3 playerVelocity;
-    private float maxDistance;
+    private Vector3 playerVelocity;    
     private bool hitDetect;
     private bool sphereDetect;
     private Vector3 origin;
@@ -18,7 +17,6 @@ public class PlayerMove : MonoBehaviour
     
     private void Start()
     {
-        maxDistance = 4f;
         controller = GetComponent<CharacterController>();        
     }
 

@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
     public LayerMask layerMask;
     public int highlightMask;
     public float sphereRadius;
-    public float maxDistance;
+    public float maxDistance = 4f;
     public bool hitDetect;
     public bool sphereDetect;
     public Vector3 origin;
