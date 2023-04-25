@@ -16,4 +16,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         
     }
+
+    private void FixedUpdate()
+    {
+        
+    }
 }
