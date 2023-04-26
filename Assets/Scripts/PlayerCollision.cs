@@ -24,8 +24,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void Start()
     {
-        foods = GameObject.FindGameObjectsWithTag("Food");
-        col = GetComponent<Collider>();
+        foods = GameObject.FindGameObjectsWithTag("Food");        
     }
 
     private void Awake()
@@ -41,11 +40,11 @@ public class PlayerCollision : MonoBehaviour
         {
             if (hit.transform.CompareTag("InteractableBlocks"))
             {
-
+                Debug.Log("InteractableBlocks around!");
             }
             else if (hit.transform.CompareTag("NormalBlocks"))
             {
-
+                Debug.Log("NormalBlocks around!");
             }
         }
 
