@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    private PlayerMove controller;
+
     [HideInInspector]
     public RaycastHit hit;
     [HideInInspector]
@@ -11,6 +13,7 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Player Collision")]
     public GameObject[] foods;
+    public float force = 10f;
     public float distanceToFood;
     public LayerMask layerMask;
     public int highlightMask;
@@ -24,7 +27,9 @@ public class PlayerCollision : MonoBehaviour
 
     private void Start()
     {
-        foods = GameObject.FindGameObjectsWithTag("Food");        
+        foods = GameObject.FindGameObjectsWithTag("Food");
+        controller = GetComponent<PlayerMove>();
+        col = controller.GetComponent<Collider>();
     }
 
     private void Awake()
@@ -61,6 +66,19 @@ public class PlayerCollision : MonoBehaviour
             {
                 Debug.Log("Food around!");
             }
+        }
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // Verify if the player collided with foods
+        if (hit.gameObject.CompareTag("Food"))
+        {
+            // Obtain the food rigidbody
+            Rigidbody foodRigidbody = hit.gameObject.GetComponent<Rigidbody>();
+
+            // Apllies force to the food
+            foodRigidbody.AddForce(hit.moveDirection * force);
         }
     }
 

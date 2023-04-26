@@ -78,7 +78,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2708432771057459110}
   - component: {fileID: 4129243733427283043}
+  - component: {fileID: 7238066800451414918}
   - component: {fileID: 1505135899}
+  - component: {fileID: 1531421746030366204}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -114,7 +116,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e1558259d268a47aa9436cae2c8430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 20
+  playerVelocity: 22
+  gravity: {x: 0, y: -9.81, z: 0}
+--- !u!114 &7238066800451414918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520259936036940341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902f0527c6dc6554b97c20f747e31b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 0}
+  foods: []
+  force: 50
+  distanceToFood: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  highlightMask: 3
+  sphereRadius: 0
+  maxDistance: 4
+  hitDetect: 0
+  sphereDetect: 0
+  origin: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!143 &1505135899
 CharacterController:
   m_ObjectHideFlags: 0
@@ -133,6 +162,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.1, z: 0}
+--- !u!54 &1531421746030366204
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520259936036940341}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &8688634626360136524
 PrefabInstance:
   m_ObjectHideFlags: 0

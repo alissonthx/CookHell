@@ -5613,6 +5613,7 @@ GameObject:
   - component: {fileID: 2004954369}
   - component: {fileID: 2004954368}
   - component: {fileID: 2004954367}
+  - component: {fileID: 2004954371}
   m_Layer: 0
   m_Name: Food
   m_TagString: Food
@@ -5691,13 +5692,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004954366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.11, y: 1.2, z: 0}
+  m_LocalPosition: {x: -1.11, y: 7.91, z: 0}
   m_LocalScale: {x: 2.400623, y: 2.287179, z: 2.287179}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059707923}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2004954371
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004954366}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2017979829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a8ef9da00d1a064aa24bf3047eae13a,
@@ -5957,20 +5974,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4129243733427283043, guid: 651074ce3d3b76049a59b155d5128f4d,
-        type: 3}
-      propertyPath: playerSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129243733427283043, guid: 651074ce3d3b76049a59b155d5128f4d,
-        type: 3}
-      propertyPath: playerVelocity
-      value: 22
-      objectReference: {fileID: 0}
     - target: {fileID: 4520259936036940341, guid: 651074ce3d3b76049a59b155d5128f4d,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238066800451414918, guid: 651074ce3d3b76049a59b155d5128f4d,
+        type: 3}
+      propertyPath: force
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 651074ce3d3b76049a59b155d5128f4d, type: 3}
