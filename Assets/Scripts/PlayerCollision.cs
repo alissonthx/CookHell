@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private PlayerMove controller;
+    private PlayerController controller;
 
     [HideInInspector]
     public RaycastHit hit;
@@ -13,8 +13,7 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Player Collision")]
     public GameObject[] foods;
-    public float force = 10f;
-    public float distanceToFood;
+    public float force = 10f;    
     public LayerMask layerMask;
     public int highlightMask;
     public float sphereRadius;
@@ -28,7 +27,7 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         foods = GameObject.FindGameObjectsWithTag("Food");
-        controller = GetComponent<PlayerMove>();
+        controller = GetComponent<PlayerController>();
         col = controller.GetComponent<Collider>();
     }
 
@@ -39,74 +38,49 @@ public class PlayerCollision : MonoBehaviour
 
     private void FixedUpdate()
     {
-        hitDetect = Physics.BoxCast(col.bounds.center, transform.localScale, transform.forward, out hit, transform.rotation, maxDistance);
-
-        if (hitDetect)
-        {
-            if (hit.transform.CompareTag("InteractableBlocks"))
-            {
-                Debug.Log("InteractableBlocks around!");
-            }
-            else if (hit.transform.CompareTag("NormalBlocks"))
-            {
-                Debug.Log("NormalBlocks around!");
-            }
-        }
-
-        // Sphere to detects if player near to food objects
+        // hitDetect = Physics.BoxCast(col.bounds.center, transform.localScale, transform.forward, out hit, transform.rotation, maxDistance);
         origin = transform.position;
         direction = transform.forward;
-
         sphereDetect = Physics.SphereCast(origin, sphereRadius, direction, out hit, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
 
         if (sphereDetect)
         {
-            distanceToFood = hit.distance;
-            if (hit.transform.CompareTag("Food"))
+            switch (hit.transform.gameObject.tag)
             {
-                Debug.Log("Food around!");
-            }
+                case "InteractableBlocks":
+                    Debug.Log("InteractableBlocks around!");
+                    break;
+                case "NormalBlocks":
+                    Debug.Log("NormalBlocks around!");
+                    break;
+                case "Food":
+                    Debug.Log("Food around!");
+                    break;
+                case "FoodBox":
+                    Debug.Log("Food Box here");
+                    break;
+            }            
         }
     }
 
+
+    // make physics for foods objects
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // Verify if the player collided with foods
         if (hit.gameObject.CompareTag("Food"))
         {
-            // Obtain the food rigidbody
             Rigidbody foodRigidbody = hit.gameObject.GetComponent<Rigidbody>();
-
-            // Apllies force to the food
+         
             foodRigidbody.AddForce(hit.moveDirection * force);
         }
     }
 
-    //Draw the BoxCast as a gizmo to show where it currently is testing
     private void OnDrawGizmos()
     {
         // Draw spherecast ray arounds the player
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, distanceToFood);
-
         Gizmos.color = Color.red;
-
-        //Check if there has been a hit yet
-        if (hitDetect)
-        {
-            //Draw a Ray forward from GameObject toward the hit
-            Gizmos.DrawRay(transform.position, transform.forward * hit.distance);
-            //Draw a cube that extends to where the hit exists
-            Gizmos.DrawWireCube(transform.position + transform.forward * hit.distance, transform.localScale);
-        }
-        //If there hasn't been a hit yet, draw the ray at the maximum distance
-        else
-        {
-            //Draw a Ray forward from GameObject toward the maximum distance
-            Gizmos.DrawRay(transform.position, transform.forward * maxDistance);
-            //Draw a cube at the maximum distance
-            Gizmos.DrawWireCube(transform.position + transform.forward * maxDistance, transform.localScale);
-        }
+        Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
 
 }
