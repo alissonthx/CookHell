@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [HideInInspector]
-    public Animator anim;    
+    public Animator anim; 
+    private PlayerCollision col;
+
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();        
     }
 
     void Update()
@@ -21,5 +23,9 @@ public class PlayerAnimation : MonoBehaviour
         {
             anim.SetBool("isWalking", false);
         }
+    }
+
+    public void SetBool(string name){
+        anim.SetBool(name, true);
     }
 }

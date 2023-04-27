@@ -13,7 +13,7 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("Player Collision")]
     public GameObject[] foods;
-    public float force = 10f;    
+    public float force = 10f;
     public LayerMask layerMask;
     public int highlightMask;
     public float sphereRadius;
@@ -22,7 +22,6 @@ public class PlayerCollision : MonoBehaviour
     public bool sphereDetect;
     public Vector3 origin;
     public Vector3 direction;
-
 
     private void Start()
     {
@@ -48,21 +47,31 @@ public class PlayerCollision : MonoBehaviour
             switch (hit.transform.gameObject.tag)
             {
                 case "InteractableBlocks":
-                    Debug.Log("InteractableBlocks around!");
+                    // Debug.Log("InteractableBlocks around!");
                     break;
                 case "NormalBlocks":
-                    Debug.Log("NormalBlocks around!");
-                    break;
-                case "Food":
-                    Debug.Log("Food around!");
+                    // Debug.Log("NormalBlocks around!");
                     break;
                 case "FoodBox":
-                    Debug.Log("Food Box here");
+                    // Debug.Log("Food Box here");
                     break;
-            }            
+            }
+            switch (hit.transform.gameObject.tag)
+            {
+                case "Food":
+                    FoodCatch(hit);
+                    break;
+            }
         }
     }
 
+    private void FoodCatch(RaycastHit hit)
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            hit.transform.gameObject.SetActive(false);
+        }
+    }
 
     // make physics for foods objects
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -71,7 +80,7 @@ public class PlayerCollision : MonoBehaviour
         if (hit.gameObject.CompareTag("Food"))
         {
             Rigidbody foodRigidbody = hit.gameObject.GetComponent<Rigidbody>();
-         
+
             foodRigidbody.AddForce(hit.moveDirection * force);
         }
     }
