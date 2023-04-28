@@ -25,7 +25,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    public void SetBool(string name){
-        anim.SetBool(name, true);
+    public void SetBool(string name, bool value){
+        anim.SetBool(name, value);
     }
 }

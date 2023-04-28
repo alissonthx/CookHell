@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    void Start()
-    {
-            
-    }
+}
 
-    void Update()
+public interface IGameController
+{
+    void Catch();
+}
+
+public class Foods : MonoBehaviour, IGameController
+{
+    void IGameController.Catch()
     {
-        
+        Debug.Log("Catch Food");
     }
 }
