@@ -6,13 +6,13 @@ public class PlayerCollision : MonoBehaviour
 {
     private PlayerController controller;
     private PlayerAnimation anim;
+    private PlayerController playerControl;
 
     [HideInInspector]
     public RaycastHit hit;
     [HideInInspector]
     public Collider col;
 
-    private bool isFood = false;
 
     [Header("Player Collision")]
     public float force = 10f;
@@ -20,19 +20,21 @@ public class PlayerCollision : MonoBehaviour
     public int highlightMask;
     public float sphereRadius;
     public float maxDistance = 4f;
-    public bool hitDetect;
     public bool sphereDetect;
-
-
 
     public Vector3 origin;
     public Vector3 direction;
 
     [Header("Food")]
+    [SerializeField]
+    private bool isFood = false;
+    [SerializeField]
+    private bool foodCatched = false;
     public GameObject[] foods;
     public GameObject foodGo;
     [SerializeField]
     private GameObject foodPoint;
+    private Vector3 distanceToFood;
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class PlayerCollision : MonoBehaviour
         controller = GetComponent<PlayerController>();
         anim = GetComponentInChildren<PlayerAnimation>();
         col = controller.GetComponent<Collider>();
+        playerControl = GetComponent<PlayerController>();
     }
 
     private void Awake()
@@ -49,14 +52,36 @@ public class PlayerCollision : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire2") && isFood)
+        if (Input.GetButtonDown("Fire2") && isFood && !foodCatched)
         {
             anim.SetBool("isCatching", true);
 
             foodGo.transform.SetParent(foodPoint.transform);
             foodGo.transform.position = foodPoint.transform.position;
             foodGo.GetComponent<Rigidbody>().isKinematic = true;
+            foodCatched = true;
+        }
+        else if (Input.GetButtonDown("Fire2") && foodCatched)
+        {
+            anim.SetBool("isCatching", false);
 
+            foodCatched = false;
+            foodGo.transform.SetParent(null);
+            foodGo.transform.position = transform.position + transform.forward * 2f;
+            foodGo.GetComponent<Rigidbody>().isKinematic = false;
+        }
+    }
+
+    public void Catch()
+    {
+        if (hit.transform.gameObject.tag == "Food")
+        {
+            foodGo = hit.transform.gameObject;
+            isFood = true;
+        }
+        else
+        {
+            isFood = false;
         }
     }
 
@@ -77,19 +102,13 @@ public class PlayerCollision : MonoBehaviour
                 case "FoodBox":
                     break;
                 case "Food":
-                    FoodCatch();
+                    Catch();
                     break;
             }
-
         }
-    }
-
-    private void FoodCatch()
-    {
-        if (hit.transform != null)
+        else
         {
-            foodGo = hit.transform.gameObject;
-            isFood = true;
+            isFood = false;
         }
     }
 
@@ -98,9 +117,14 @@ public class PlayerCollision : MonoBehaviour
         // Verify if the player collided with foods
         if (hit.gameObject.CompareTag("Food"))
         {
+            isFood = true;
             Rigidbody foodRigidbody = hit.gameObject.GetComponent<Rigidbody>();
 
             foodRigidbody.AddForce(hit.moveDirection * force);
+        }
+        else
+        {
+            isFood = false;
         }
     }
 
