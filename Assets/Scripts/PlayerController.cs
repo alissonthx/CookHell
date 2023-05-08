@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCollision coll;
     private CharacterController controller;
     private InputActions playerControlls;
-    private InputActionReference Catch;
+    private InputActionReference CatchingFood, GetingFood;
 
     [Header("Player Stats")]
     [SerializeField]
@@ -25,20 +25,34 @@ public class PlayerController : MonoBehaviour
 
     [Header("Food")]
     [SerializeField]
+    private GameObject foodPrefab;
+    // [SerializeField]
+    // private GameObject spawnFood;
+    [SerializeField]
+    private GameObject foodPoint;
+
+    [Space]
+
+    [SerializeField]
     private bool isFood;
+    [SerializeField]
+    private bool isFoodBox;
     [SerializeField]
     private bool foodCatched = false;
     [SerializeField]
     private GameObject foodGo;
     [SerializeField]
-    private GameObject foodPoint;
+    private GameObject foodBox;
+
+    [SerializeField]
+    private GameObject foodInstance;
+
 
     #endregion
 
     private void Awake()
     {
         playerControlls = new InputActions();
-        playerControlls.Player.Move.performed += OnMove;
     }
 
     private void Start()
@@ -50,7 +64,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        foodGo = coll.foodGo;
+        foodBox = coll.foodBox;
         isFood = coll._isFood;
+        isFoodBox = coll._isFoodBox;
         Move();
     }
 
@@ -82,7 +99,7 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector3 rawMovement = playerControlls.Player.Move.ReadValue<Vector2>();
+        Vector3 rawMovement = playerControlls.Player.Movement.ReadValue<Vector2>();
 
         movement.x = rawMovement.x;
         movement.z = rawMovement.y;
@@ -99,19 +116,24 @@ public class PlayerController : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
-        
+
     }
 
-    public void OnGetFood(InputAction.CallbackContext context)
+    public void OnGetingFood(InputAction.CallbackContext context)
     {
         Debug.Log("GetFood");
+        if (context.started && isFoodBox)
+        {
+            foodInstance = Instantiate(foodPrefab, foodBox.transform.position, Quaternion.identity);
+            Invoke("CatchFood", 0.5f);
+        }
     }
 
-    public void OnCatch(InputAction.CallbackContext context)
+    public void OnCatchingFood(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("Catch started");
+            // Debug.Log("Catch started");
             if (isFood && !foodCatched)
                 CatchFood();
             else if (foodCatched)

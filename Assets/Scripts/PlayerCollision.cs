@@ -10,8 +10,10 @@ public class PlayerCollision : MonoBehaviour
     private PlayerController playerControl;
     private FoodBoxController foodBoxController;
 
-    
     [HideInInspector]
+    public GameObject foodGo;
+    [HideInInspector]
+    public GameObject foodBox;
     public Collider col;
     public RaycastHit hit;
 
@@ -32,7 +34,10 @@ public class PlayerCollision : MonoBehaviour
     [HideInInspector]
     public bool isFood = false;
     public bool _isFood => this.isFood;
-    
+    [HideInInspector]
+    public bool isFoodBox = false;
+    public bool _isFoodBox => this.isFoodBox;
+
     private Vector3 distanceToFood;
 
     #endregion
@@ -65,20 +70,25 @@ public class PlayerCollision : MonoBehaviour
                 case "NormalBlocks":
                     break;
                 case "FoodBox":
-                    // Debug.Log("FoodBox is colliding");                    
+                    // Debug.Log("FoodBox is colliding");
+                    foodBox = hit.transform.gameObject;
+                    isFoodBox = true;
                     break;
                 case "Food":
-                    Debug.Log("Food around!");
+                    // Debug.Log("Food around!");
+                    foodGo = hit.transform.gameObject;
                     isFood = true;
                     break;
             }
-        } 
+        }
         else
         {
             isFood = false;
-        }       
-    }    
+            isFoodBox = false;
+        }
+    }
 
+    // gravity is applied separately from the character controller
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // Verify if the player collided with foods
