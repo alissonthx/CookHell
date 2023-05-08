@@ -24,7 +24,7 @@ public class FoodHeldState : FoodBaseState
 
             food.transform.SetParent(other.transform);
             food.transform.position = other.transform.position;
-            food.GetComponent<Rigidbody>().isKinematic = true;
+            food.GetComponent<Rigidbody>().isKinematic = true;         
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3782243553573751019}
   - component: {fileID: 3782243553573751012}
   - component: {fileID: 3782243553573751013}
+  - component: {fileID: 6186355508066122713}
   m_Layer: 3
   m_Name: FoodBox
   m_TagString: FoodBox
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3782243553573751018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -41.22, y: 0, z: 4.010229}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1911, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3744605669518068769}
@@ -59,9 +60,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5d0bb23472dd64cb2035acda509a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodGo: {fileID: 0}
   foodPrefab: {fileID: 2632427326558770606, guid: 025cd6f6e0ed19444badf1b8553b39a6,
     type: 3}
+--- !u!114 &6186355508066122713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782243553573751018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1832e2548df26444db72e16a8db03c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
 --- !u!1001 &3782243554453400522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,7 +115,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7a8ef9da00d1a064aa24bf3047eae13a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a8ef9da00d1a064aa24bf3047eae13a,
         type: 3}

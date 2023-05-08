@@ -15,14 +15,14 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-        {
-            anim.SetBool("isWalking", true);
-        }
-        else
-        {
-            anim.SetBool("isWalking", false);
-        }
+        // if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        // {
+        //     anim.SetBool("isWalking", true);
+        // }
+        // else
+        // {
+        //     anim.SetBool("isWalking", false);
+        // }
     }
 
     public void SetBool(string name, bool value){

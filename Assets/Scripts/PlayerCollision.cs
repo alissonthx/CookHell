@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    #region Variables
     private PlayerController controller;
     private PlayerAnimation anim;
     private PlayerController playerControl;
+    private FoodBoxController foodBoxController;
 
     
     [HideInInspector]
@@ -26,12 +28,17 @@ public class PlayerCollision : MonoBehaviour
     public Vector3 direction;
 
     [Header("Food")]
-    public GameObject[] foods;
+    // public GameObject[] foods;
+    [HideInInspector]
+    public bool isFood = false;
+    public bool _isFood => this.isFood;
+    
     private Vector3 distanceToFood;
 
+    #endregion
     private void Start()
     {
-        foods = GameObject.FindGameObjectsWithTag("Food");
+        // foods = GameObject.FindGameObjectsWithTag("Food");
         controller = GetComponent<PlayerController>();
         anim = GetComponentInChildren<PlayerAnimation>();
         col = controller.GetComponent<Collider>();
@@ -58,14 +65,18 @@ public class PlayerCollision : MonoBehaviour
                 case "NormalBlocks":
                     break;
                 case "FoodBox":
-                    Debug.Log("FoodBox is colliding");
+                    // Debug.Log("FoodBox is colliding");                    
                     break;
                 case "Food":
-                    Debug.Log("Food is colliding");
-                    playerControl.Catch(hit);
+                    Debug.Log("Food around!");
+                    isFood = true;
                     break;
             }
-        }        
+        } 
+        else
+        {
+            isFood = false;
+        }       
     }    
 
     void OnControllerColliderHit(ControllerColliderHit hit)
