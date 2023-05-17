@@ -80,21 +80,31 @@ public class PlayerController : MonoBehaviour
 
     private void CatchFood()
     {
+        if(foodGo == null)
+        {
+            foodGo = foodInstance;
+        }
         anim.SetBool("isCatching", true);
 
         foodGo.transform.SetParent(foodPoint.transform);
         foodGo.transform.position = foodPoint.transform.position;
         foodGo.GetComponent<Rigidbody>().isKinematic = true;
+        foodGo.GetComponent<Collider>().enabled = false;
         foodCatched = true;
     }
 
     private void DropFood()
     {
+        if(foodGo == null)
+        {
+            foodGo = foodInstance;
+        }
         anim.SetBool("isCatching", false);
 
         foodGo.transform.SetParent(null);
         foodGo.transform.position = transform.position + transform.forward * 2f;
         foodGo.GetComponent<Rigidbody>().isKinematic = false;
+        foodGo.GetComponent<Collider>().enabled = true;
         foodCatched = false;
     }
 
