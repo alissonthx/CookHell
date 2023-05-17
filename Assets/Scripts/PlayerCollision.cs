@@ -10,27 +10,32 @@ public class PlayerCollision : MonoBehaviour
     private PlayerController playerControl;
     private FoodBoxController foodBoxController;
 
+    [Space]
+
     [HideInInspector]
     public GameObject foodGo;
     [HideInInspector]
     public GameObject foodBox;
-    public Collider col;
+    [HideInInspector]
+    public Collider coll;
+    [HideInInspector]
     public RaycastHit hit;
 
+    [Space]
 
     [Header("Player Collision")]
     public float force = 10f;
     public LayerMask layerMask;
-    public int highlightMask;
     public float sphereRadius;
-    public float maxDistance = 4f;
-    public bool sphereDetect;
+    // public float maxDistance = 4f;
+    public Collider[] sphereDetect;
 
     public Vector3 origin;
     public Vector3 direction;
 
+    [Space]
+
     [Header("Food")]
-    // public GameObject[] foods;
     [HideInInspector]
     public bool isFood = false;
     public bool _isFood => this.isFood;
@@ -43,49 +48,61 @@ public class PlayerCollision : MonoBehaviour
     #endregion
     private void Start()
     {
-        // foods = GameObject.FindGameObjectsWithTag("Food");
         controller = GetComponent<PlayerController>();
         anim = GetComponentInChildren<PlayerAnimation>();
-        col = controller.GetComponent<Collider>();
+        coll = controller.GetComponent<Collider>();
         playerControl = GetComponent<PlayerController>();
-    }
-
-    private void Awake()
-    {
-        highlightMask = LayerMask.NameToLayer("Highlight");
     }
 
     private void FixedUpdate()
     {
         origin = transform.position;
         direction = transform.forward;
-        sphereDetect = Physics.SphereCast(origin, sphereRadius, direction, out hit, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
+        // sphereDetect = Physics.SphereCast(origin, sphereRadius, direction, out hit, maxDistance, layerMask, QueryTriggerInteraction.UseGlobal);
+        sphereDetect = Physics.OverlapSphere(origin, sphereRadius, layerMask);
 
-        if (sphereDetect)
+        if (sphereDetect.Length > 0)
         {
-            switch (hit.transform.gameObject.tag)
+            // switch (hit.transform.gameObject.tag)
+            GameObject sphereGo = sphereDetect[0].gameObject;
+            switch (sphereGo.tag)
             {
                 case "InteractableBlocks":
+                    // Debug.Log("InteractableBlocks around!");
+                    ResetInteract();
                     break;
                 case "NormalBlocks":
+                    ResetInteract();
+                    // Debug.Log("NormalBlocks around!");
                     break;
                 case "FoodBox":
-                    // Debug.Log("FoodBox is colliding");
-                    foodBox = hit.transform.gameObject;
+                    // Debug.Log("FoodBox around!");
+                    // foodBox = hit.transform.gameObject;
+                    foodBox = sphereGo;
+                    sphereGo.transform.Find("Selected").gameObject.SetActive(true);
                     isFoodBox = true;
                     break;
-                case "Food":
-                    // Debug.Log("Food around!");
-                    foodGo = hit.transform.gameObject;
-                    isFood = true;
+                case "Food":                    
+                    // Debug.Log("Food around!");                    
+                    // foodGo = hit.transform.gameObject;
+                    foodGo = sphereGo.transform.gameObject;
+                    isFood = true;                    
                     break;
             }
         }
         else
         {
-            isFood = false;
-            isFoodBox = false;
+            ResetInteract();
         }
+    }
+    private void ResetInteract()
+    {
+        if (foodBox != null)
+        {
+            foodBox.transform.Find("Selected").gameObject.SetActive(false);
+        }
+        isFood = false;
+        isFoodBox = false;
     }
 
     // gravity is applied separately from the character controller

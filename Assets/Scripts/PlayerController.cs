@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,15 +24,13 @@ public class PlayerController : MonoBehaviour
     public Vector3 movement = Vector3.zero;
     public Vector3 _movement => this.movement;
 
+    [Space]
+
     [Header("Food")]
     [SerializeField]
     private GameObject foodPrefab;
-    // [SerializeField]
-    // private GameObject spawnFood;
     [SerializeField]
     private GameObject foodPoint;
-
-    [Space]
 
     [SerializeField]
     private bool isFood;
@@ -41,11 +40,14 @@ public class PlayerController : MonoBehaviour
     private bool foodCatched = false;
     [SerializeField]
     private GameObject foodGo;
-    [SerializeField]
-    private GameObject foodBox;
 
     [SerializeField]
     private GameObject foodInstance;
+
+    [Space]
+    [SerializeField]
+    private GameObject debug;
+
 
 
     #endregion
@@ -65,10 +67,15 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         foodGo = coll.foodGo;
-        foodBox = coll.foodBox;
         isFood = coll._isFood;
         isFoodBox = coll._isFoodBox;
         Move();
+        DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched);        
+    }
+
+    private void DebugInText(string text)
+    {
+        debug.GetComponent<Text>().text = text;
     }
 
     private void CatchFood()
@@ -85,10 +92,10 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("isCatching", false);
 
-        foodCatched = false;
         foodGo.transform.SetParent(null);
         foodGo.transform.position = transform.position + transform.forward * 2f;
         foodGo.GetComponent<Rigidbody>().isKinematic = false;
+        foodCatched = false;
     }
 
     private void Move()
@@ -114,24 +121,20 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
-    public void OnMove(InputAction.CallbackContext context)
-    {
-
-    }
 
     public void OnGetingFood(InputAction.CallbackContext context)
     {
-        Debug.Log("GetFood");
+        // Debug.Log("GetFood");
         if (context.started && isFoodBox)
         {
-            foodInstance = Instantiate(foodPrefab, foodBox.transform.position, Quaternion.identity);
-            Invoke("CatchFood", 0.5f);
+            foodInstance = Instantiate(foodPrefab, foodPoint.transform.position, Quaternion.identity);
+            Invoke("CatchFood", 0.1f);
         }
     }
 
     public void OnCatchingFood(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.performed)
         {
             // Debug.Log("Catch started");
             if (isFood && !foodCatched)
@@ -150,18 +153,4 @@ public class PlayerController : MonoBehaviour
     {
         playerControlls.Player.Disable();
     }
-
-    // public void CatchTouchFood(RaycastHit hit)
-    // {
-    //     if (hit.transform.gameObject.tag == "Food")
-    //     {
-    //         Debug.Log("Food touched");
-    //         foodGo = hit.transform.gameObject;
-    //         isFood = true;
-    //     }
-    //     else
-    //     {
-    //         isFood = false;
-    //     }
-    // }
 }
