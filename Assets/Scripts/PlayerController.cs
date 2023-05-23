@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private InputActionReference CatchingFood, GetingFood;
 
     [Header("Player Stats")]
+    [Space]
     [SerializeField]
     private float playerSpeed;
     [SerializeField]
@@ -21,29 +22,50 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float gravityValue = -9.81f;
     private bool groundedPlayer;
-    public Vector3 movement = Vector3.zero;
+    private Vector3 movement = Vector3.zero;
     public Vector3 _movement => this.movement;
 
     [Space]
+    [Space]
 
     [Header("Food")]
-    [SerializeField]
-    private GameObject foodPrefab;
-    [SerializeField]
-    private GameObject foodPoint;
+    [Space]
 
+    [Space]
+    [Header("Bools")]
     [SerializeField]
     private bool isFood;
     [SerializeField]
     private bool isFoodBox;
     [SerializeField]
+    private bool isCounter;
+    [SerializeField]
+    private bool isCounterInteractable;
+    [SerializeField]
     private bool foodCatched = false;
+    [SerializeField]
+    private bool foodInside = false;
+
+    [Space]
+    [Header("GameObjects")]
+    [SerializeField]
+    private GameObject foodPrefab;
+    [SerializeField]
+    private GameObject foodPoint;
+    [SerializeField]
+    private GameObject foodPointOnCounter;
     [SerializeField]
     private GameObject foodGo;
 
     [SerializeField]
     private GameObject foodInstance;
+    [SerializeField]
+    private GameObject counter;
 
+    [Space]
+    [Space]
+
+    [Header("Debug")]
     [Space]
     [SerializeField]
     private GameObject debug;
@@ -66,11 +88,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        foodGo = coll.foodGo;
+        counter = coll._counter;
+        foodGo = coll._foodGo;
         isFood = coll._isFood;
+        isCounter = coll._isCounter;
+        isCounterInteractable = coll._isCounterInteractable;
         isFoodBox = coll._isFoodBox;
+
         Move();
-        DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched);        
+
+        DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched + "\nisCounter: " + isCounter + "\nisCounterInteractable: " + isCounterInteractable);
     }
 
     private void DebugInText(string text)
@@ -80,7 +107,8 @@ public class PlayerController : MonoBehaviour
 
     private void CatchFood()
     {
-        if(foodGo == null)
+        // Debug.Log("CatchFood");
+        if (foodGo == null)
         {
             foodGo = foodInstance;
         }
@@ -95,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
     private void DropFood()
     {
-        if(foodGo == null)
+        if (foodGo == null)
         {
             foodGo = foodInstance;
         }
@@ -105,6 +133,22 @@ public class PlayerController : MonoBehaviour
         foodGo.transform.position = transform.position + transform.forward * 2f;
         foodGo.GetComponent<Rigidbody>().isKinematic = false;
         foodGo.GetComponent<Collider>().enabled = true;
+        foodCatched = false;
+    }
+
+    public void DropOnCounter(GameObject foodOnPlayer)
+    {
+        anim.SetBool("isCatching", false);
+
+        foodPointOnCounter = counter.transform.Find("FoodPoint").gameObject;
+
+        foodOnPlayer.transform.SetParent(foodPointOnCounter.transform);
+        foodOnPlayer.transform.position = foodPointOnCounter.transform.position;
+        
+        foodOnPlayer.GetComponent<Rigidbody>().isKinematic = true;
+        foodOnPlayer.GetComponent<Collider>().enabled = false;
+
+        foodInside = true;
         foodCatched = false;
     }
 
@@ -139,6 +183,7 @@ public class PlayerController : MonoBehaviour
         {
             foodInstance = Instantiate(foodPrefab, foodPoint.transform.position, Quaternion.identity);
             Invoke("CatchFood", 0.1f);
+            foodGo = null;
         }
     }
 
@@ -146,11 +191,23 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            // Debug.Log("Catch started");
             if (isFood && !foodCatched)
+            {
+                // Debug.Log("Catch started");
                 CatchFood();
+            }
             else if (foodCatched)
-                DropFood();
+            {
+                if (isCounter || isCounterInteractable)
+                {
+                    if(!foodInside)
+                    DropOnCounter(foodInstance);
+                }
+                else
+                {
+                    DropFood();
+                }
+            }
         }
     }
 
