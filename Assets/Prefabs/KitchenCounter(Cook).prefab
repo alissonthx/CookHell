@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453194334916996753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 2, z: 0}
+  m_LocalPosition: {x: 3.85, y: 4.04, z: -2.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1092,6 +1092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 47851941000930671}
   - component: {fileID: 1766938115979844074}
+  - component: {fileID: -1637229033495249730}
   m_Layer: 3
   m_Name: KitchenCounter(Cook)
   m_TagString: InteractableBlocks
@@ -1130,6 +1131,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.44, y: 3, z: 5.6}
   m_Center: {x: 3.67, y: 1.5, z: -2.75}
+--- !u!114 &-1637229033495249730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4473519996365408657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732bf6d9be1580046b20b840f58fe8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5356996341887614244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,7 +2163,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5155
+  m_VersionIndex: 5164
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

@@ -28,6 +28,13 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Space]
 
+    [Header("Debug")]
+    [Space]
+    [SerializeField]
+    private GameObject debug;
+
+    [Space]
+
     [Header("Food")]
     [Space]
 
@@ -62,16 +69,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject counter;
 
-    [Space]
-    [Space]
-
-    [Header("Debug")]
-    [Space]
-    [SerializeField]
-    private GameObject debug;
-
-
-
     #endregion
 
     private void Awake()
@@ -96,13 +93,37 @@ public class PlayerController : MonoBehaviour
         isFoodBox = coll._isFoodBox;
 
         Move();
-
+        
         DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched + "\nisCounter: " + isCounter + "\nisCounterInteractable: " + isCounterInteractable);
-    }
+    } 
 
     private void DebugInText(string text)
     {
         debug.GetComponent<Text>().text = text;
+    }  
+
+    private void Move()
+    {
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
+        Vector3 rawMovement = playerControlls.Player.Movement.ReadValue<Vector2>();
+
+        movement.x = rawMovement.x;
+        movement.z = rawMovement.y;
+
+        controller.Move(movement * Time.deltaTime * playerSpeed);
+
+        if (movement != Vector3.zero)
+        {
+            gameObject.transform.forward = movement;
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 
     private void CatchFood()
@@ -152,29 +173,6 @@ public class PlayerController : MonoBehaviour
         foodCatched = false;
     }
 
-    private void Move()
-    {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
-
-        Vector3 rawMovement = playerControlls.Player.Movement.ReadValue<Vector2>();
-
-        movement.x = rawMovement.x;
-        movement.z = rawMovement.y;
-
-        controller.Move(movement * Time.deltaTime * playerSpeed);
-
-        if (movement != Vector3.zero)
-        {
-            gameObject.transform.forward = movement;
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-    }
 
     public void OnGetingFood(InputAction.CallbackContext context)
     {

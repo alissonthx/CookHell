@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3043054454962951376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 3.5, z: -2.88}
+  m_LocalPosition: {x: 3.85, y: 4.04, z: -2.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5101
+  m_VersionIndex: 5155
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -910,6 +910,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2541247657658389493}
   - component: {fileID: 2699700952879189047}
+  - component: {fileID: 3755700471007289962}
+  - component: {fileID: 57143674228849705}
   m_Layer: 3
   m_Name: KitchenCounter(Empty)
   m_TagString: NormalBlocks
@@ -948,6 +950,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.44, y: 3, z: 5.6}
   m_Center: {x: 3.67, y: 1.5, z: -2.75}
+--- !u!114 &3755700471007289962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346858151346437134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732bf6d9be1580046b20b840f58fe8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &57143674228849705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346858151346437134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267d9360008e8dd43b577c5669f0c4de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxDistance: 0
+  origin: {x: 21.3, y: 1.79, z: -2.75}
+  dimension: {x: 8, y: 3.89, z: 6}
 --- !u!1 &9207662813401539963
 GameObject:
   m_ObjectHideFlags: 0

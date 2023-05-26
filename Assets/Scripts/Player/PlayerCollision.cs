@@ -13,7 +13,6 @@ public class PlayerCollision : MonoBehaviour
 
     [Space]
 
-
     [HideInInspector]
     public Collider coll;
     [HideInInspector]
@@ -29,6 +28,8 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private Vector3 boxSize = new Vector3(2f, 2f, 2f);
     [SerializeField]
+    private float sphereSize;
+    [SerializeField]
     private float maxDistance = 2f;
     [SerializeField]
     private bool boxDetect;
@@ -39,10 +40,13 @@ public class PlayerCollision : MonoBehaviour
     [Space]
 
     [Header("Food")]
-    private GameObject counter;
-    public GameObject _counter => this.counter;
     private GameObject foodGo;
     public GameObject _foodGo => this.foodGo;
+    public bool isFood = false;
+    public bool _isFood => this.isFood;
+
+    private GameObject counter;
+    public GameObject _counter => this.counter;
     private GameObject foodBox;
     public GameObject _foodBox => this.foodBox;
 
@@ -51,12 +55,8 @@ public class PlayerCollision : MonoBehaviour
     public bool _isCounter => this.isCounter;
     private bool isCounterInteractable = false;
     public bool _isCounterInteractable => this.isCounterInteractable;
-    public bool isFood = false;
-    public bool _isFood => this.isFood;
-    public bool isFoodBox = false;
     public bool _isFoodBox => this.isFoodBox;
-
-    private Vector3 distanceToFood;
+    public bool isFoodBox = false;    
 
     #endregion
     private void Start()
@@ -91,7 +91,8 @@ public class PlayerCollision : MonoBehaviour
                     isFoodBox = true;
                     break;
                 case "Food":
-                    FoodBase();
+                    Debug.Log("Food");
+                    FoodBase();                    
                     break;
             }
         }
@@ -111,14 +112,14 @@ public class PlayerCollision : MonoBehaviour
 
         if (counter != null)
         {
-            counter.transform.Find("Selected").gameObject.SetActive(false);            
+            counter.transform.Find("Selected").gameObject.SetActive(false);
         }
     }
 
     private void CounterBase()
     {
-        counter = hit.transform.gameObject;        
-        counter.transform.Find("Selected").gameObject.SetActive(true);        
+        counter = hit.transform.gameObject;
+        counter.transform.Find("Selected").gameObject.SetActive(true);
     }
 
     private void FoodBase()
@@ -127,8 +128,15 @@ public class PlayerCollision : MonoBehaviour
         isFood = true;
     }
 
+    private void OnTriggerEnter(Collider other){
+        if(other.transform.gameObject.tag == "Food"){
+            foodGo = other.transform.gameObject;
+            isFood = true;
+        }
+    }
+
     // gravity is applied separately from the character controller
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // Verify if the player collided with foods
         if (hit.gameObject.CompareTag("Food"))
@@ -136,6 +144,9 @@ public class PlayerCollision : MonoBehaviour
             Rigidbody foodRigidbody = hit.gameObject.GetComponent<Rigidbody>();
 
             foodRigidbody.AddForce(hit.moveDirection * force);
+
+            foodGo = hit.transform.gameObject;
+            isFood = true;
         }
     }
 
@@ -144,6 +155,8 @@ public class PlayerCollision : MonoBehaviour
         // Draw cube ray in front of the player
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(origin + direction * maxDistance, boxSize);
+        
+        Gizmos.DrawWireSphere(origin + direction * maxDistance, sphereSize);
     }
 
 }
