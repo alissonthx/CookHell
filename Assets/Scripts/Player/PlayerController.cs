@@ -173,7 +173,6 @@ public class PlayerController : MonoBehaviour
         foodCatched = false;
     }
 
-
     public void OnGetingFood(InputAction.CallbackContext context)
     {
         // Debug.Log("GetFood");

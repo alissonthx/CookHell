@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CounterCollision : MonoBehaviour
 {
-    #region Variables
+    #region Variables    
     private Collider coll;
 
     [SerializeField]
@@ -16,48 +17,58 @@ public class CounterCollision : MonoBehaviour
     [SerializeField]
     private Vector3 dimension;
     private Vector3 direction;
+    [SerializeField]
     private bool boxDetect;
     private RaycastHit hit;
 
+    private InputActions playerControlls;
+    private InputActionReference GetingFood;
+
     #endregion
+
+    private void Awake()
+    {
+        playerControlls = new InputActions();
+    }
 
     private void Start()
     {
         // dimension = new Vector3(2f, 2f, 2f);
         // coll = GetComponent<Collider>();
+        // origin = transform.position;
+        // direction = transform.forward;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void FixedUpdate()
     {
-        if (other.tag == "Food")
+        boxDetect = Physics.BoxCast(origin, dimension, direction, out RaycastHit hit, transform.rotation, maxDistance, counterLayerMask, QueryTriggerInteraction.UseGlobal);
+        if (boxDetect)
         {
-            Debug.Log("Food");
+            if (hit.transform.CompareTag("Player"))
+            {
+                Debug.Log("Player detected");
+            }
         }
-        else if (other.tag == "Dish")
-        {
-            Debug.Log("Dish");
-        }
-        else if (other.tag == "Player")
-        {
-            Debug.Log("Player");
-        }
-        // switch (other.transform.gameObject.tag)
-        // {
-        //     case "Food":
-        //         Debug.Log("Food");
-        //         break;
-        //     case "Dish":
-        //         Debug.Log("Dish");
-        //         break;
-        //     case "Player":
-        //         Debug.Log("Player");
-        //         break;
-        // }
     }
 
-    // origin = transform.position;
-    // direction = transform.forward;
-    // boxDetect = Physics.BoxCast(origin, dimension, direction, out RaycastHit hit, transform.rotation, maxDistance, counterLayerMask, QueryTriggerInteraction.UseGlobal);
+    public void OnTableFood(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("Geting food");
+        }
+    }
+
+    private void OnEnable()
+    {
+        playerControlls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControlls.Disable();
+    }
+
 
     private void OnDrawGizmos()
     {

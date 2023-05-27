@@ -128,13 +128,6 @@ public class PlayerCollision : MonoBehaviour
         isFood = true;
     }
 
-    private void OnTriggerEnter(Collider other){
-        if(other.transform.gameObject.tag == "Food"){
-            foodGo = other.transform.gameObject;
-            isFood = true;
-        }
-    }
-
     // gravity is applied separately from the character controller
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -154,9 +147,7 @@ public class PlayerCollision : MonoBehaviour
     {
         // Draw cube ray in front of the player
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(origin + direction * maxDistance, boxSize);
-        
-        Gizmos.DrawWireSphere(origin + direction * maxDistance, sphereSize);
+        Gizmos.DrawWireCube(origin + direction * maxDistance, boxSize);        
     }
 
 }
