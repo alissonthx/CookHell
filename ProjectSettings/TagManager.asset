@@ -7,6 +7,8 @@ TagManager:
   - Food
   - NormalBlocks
   - InteractableBlocks
+  - FoodBox
+  - Dish
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Highlight
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
