@@ -28,7 +28,7 @@ public class CounterCollision : MonoBehaviour
 
     private void Awake()
     {
-        playerControlls = new InputActions();
+        // playerControlls = new InputActions();
     }
 
     private void Start()
@@ -59,15 +59,15 @@ public class CounterCollision : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        playerControlls.Enable();
-    }
+    // private void OnEnable()
+    // {
+    //     playerControlls.Enable();
+    // }
 
-    private void OnDisable()
-    {
-        playerControlls.Disable();
-    }
+    // private void OnDisable()
+    // {
+    //     playerControlls.Disable();
+    // }
 
 
     private void OnDrawGizmos()
