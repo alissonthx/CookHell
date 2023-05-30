@@ -10,12 +10,12 @@
 <h2>🚀 Technologies</h2>
 <ul>
 <li>
-Unity 3D Game Engine
+Unity 3D
 </li>	
 <li>
-C# Programming Language
+C#
 </li>	
 <li>
-Blender Modeling Software
+Blender
 </li>	
 <u>
