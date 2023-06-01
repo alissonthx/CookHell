@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class FoodBoxCollision : MonoBehaviour
+public class CounterCollision : MonoBehaviour
 {
-    public bool isPlayer = false;
+    #region Variables 
+    [SerializeField]   
+    private bool isPlayer = false;
     public bool _isPlayer => this.isPlayer;
 
     [Space]
 
     [Header("Box Cast")]
-    public Vector3 origin;
-    public Vector3 direction;
-    public Vector3 boxSize = new Vector3(2f, 8f, 2f);
-    public float maxDistance = 2f;
-    public LayerMask layerMask;
-    public RaycastHit hit;
+    [SerializeField]
+    private Vector3 boxSize = new Vector3(2f, 8f, 2f);
+    [SerializeField]
+    private float maxDistance = 2f;
+    [SerializeField]
+    private LayerMask layerMask;    
+    private Vector3 origin;    
+    private Vector3 direction;
+    private RaycastHit hit;
+
+    #endregion
 
     private void FixedUpdate()
     {

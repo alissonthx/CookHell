@@ -6,20 +6,20 @@ using UnityEngine.InputSystem;
 public class FoodBoxController : MonoBehaviour
 {
     #region Variables
-    private FoodBoxCollision foodBoxCollision;
-    private FoodBoxAnimation anim;
+    private CounterCollision counterCollision;
+    private CounterAnimation anim;
 
     #endregion
 
     private void Start()
     {
-        anim = GetComponentInChildren<FoodBoxAnimation>();
-        foodBoxCollision = GetComponent<FoodBoxCollision>();
+        anim = GetComponentInChildren<CounterAnimation>();
+        counterCollision = GetComponent<CounterCollision>();
     }
 
     public void OnAnimation(InputAction.CallbackContext context)
     {
-        if (context.performed && foodBoxCollision._isPlayer)
+        if (context.performed && counterCollision._isPlayer)
             anim.SetTrigger("open");
     }
 }

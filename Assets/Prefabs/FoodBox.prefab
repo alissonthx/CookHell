@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3782243553573751019}
   - component: {fileID: 3782243553573751012}
   - component: {fileID: 3782243553573751013}
-  - component: {fileID: 1797255146}
+  - component: {fileID: 8938305655496116990}
   m_Layer: 3
   m_Name: FoodBox
   m_TagString: FoodBox
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5d0bb23472dd64cb2035acda509a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1797255146
+--- !u!114 &8938305655496116990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,12 +71,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3782243553573751018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9839e992dc702a4bbb0ca588befd559, type: 3}
+  m_Script: {fileID: 11500000, guid: 267d9360008e8dd43b577c5669f0c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  origin: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
   boxSize: {x: 2, y: 8, z: 2}
   maxDistance: 2
   layerMask:

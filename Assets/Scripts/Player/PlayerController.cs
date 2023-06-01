@@ -93,14 +93,14 @@ public class PlayerController : MonoBehaviour
         isFoodBox = coll._isFoodBox;
 
         Move();
-        
+
         DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched + "\nisCounter: " + isCounter + "\nisCounterInteractable: " + isCounterInteractable);
-    } 
+    }
 
     private void DebugInText(string text)
     {
         debug.GetComponent<Text>().text = text;
-    }  
+    }
 
     private void Move()
     {
@@ -165,12 +165,17 @@ public class PlayerController : MonoBehaviour
 
         foodOnPlayer.transform.SetParent(foodPointOnCounter.transform);
         foodOnPlayer.transform.position = foodPointOnCounter.transform.position;
-        
+
         foodOnPlayer.GetComponent<Rigidbody>().isKinematic = true;
         foodOnPlayer.GetComponent<Collider>().enabled = false;
 
         foodInside = true;
         foodCatched = false;
+    }
+
+    public void Cut()
+    {        
+        anim.SetBool("cut", false);
     }
 
     public void OnGetingFood(InputAction.CallbackContext context)
@@ -197,8 +202,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (isCounter || isCounterInteractable)
                 {
-                    if(!foodInside)
-                    DropOnCounter(foodInstance);
+                    if (!foodInside)
+                        DropOnCounter(foodInstance);
                 }
                 else
                 {

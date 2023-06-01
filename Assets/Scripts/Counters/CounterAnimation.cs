@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodBoxAnimation : MonoBehaviour
+public class CounterAnimation : MonoBehaviour
 {
     [HideInInspector]
     public Animator anim;
