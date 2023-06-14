@@ -52,9 +52,13 @@ public class PlayerController : MonoBehaviour
     private bool foodCatched = false;
     [SerializeField]
     private bool foodInside = false;
+    [SerializeField]
+    private bool foodOnCounter;
 
     [Space]
     [Header("GameObjects")]
+    [SerializeField]
+    private GameObject knifeGo;
     [SerializeField]
     private GameObject foodPrefab;
     [SerializeField]
@@ -173,9 +177,11 @@ public class PlayerController : MonoBehaviour
         foodCatched = false;
     }
 
-    public void Cut()
-    {        
-        anim.SetBool("cut", false);
+    public void CutFood()
+    {
+        anim.SetBool("cut", true);
+        knifeGo.SetActive(true);
+        // Invoke("CutFoodEnd", 0.5f);
     }
 
     public void OnGetingFood(InputAction.CallbackContext context)
@@ -183,9 +189,18 @@ public class PlayerController : MonoBehaviour
         // Debug.Log("GetFood");
         if (context.started && isFoodBox)
         {
+            counter.transform.Find("Visual").gameObject.GetComponent<CounterAnimation>().SetTrigger("open");
             foodInstance = Instantiate(foodPrefab, foodPoint.transform.position, Quaternion.identity);
             Invoke("CatchFood", 0.1f);
             foodGo = null;
+        }
+    }
+
+    public void OnCuttingFood(InputAction.CallbackContext context)
+    {
+        if (context.started && foodOnCounter)
+        {
+            CutFood();
         }
     }
 

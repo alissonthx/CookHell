@@ -28,8 +28,6 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private Vector3 boxSize = new Vector3(2f, 2f, 2f);
     [SerializeField]
-    private float sphereSize;
-    [SerializeField]
     private float maxDistance = 2f;
     [SerializeField]
     private bool boxDetect;
@@ -56,7 +54,7 @@ public class PlayerCollision : MonoBehaviour
     private bool isCounterInteractable = false;
     public bool _isCounterInteractable => this.isCounterInteractable;
     public bool _isFoodBox => this.isFoodBox;
-    public bool isFoodBox = false;    
+    public bool isFoodBox = false;
 
     #endregion
     private void Start()
@@ -92,7 +90,7 @@ public class PlayerCollision : MonoBehaviour
                     break;
                 case "Food":
                     Debug.Log("Food");
-                    FoodBase();                    
+                    FoodBase();
                     break;
             }
         }
@@ -119,7 +117,7 @@ public class PlayerCollision : MonoBehaviour
     private void CounterBase()
     {
         counter = hit.transform.gameObject;
-        counter.transform.Find("Selected").gameObject.SetActive(true);
+        counter.transform.Find("Selected").gameObject.SetActive(true);        
     }
 
     private void FoodBase()
@@ -147,7 +145,7 @@ public class PlayerCollision : MonoBehaviour
     {
         // Draw cube ray in front of the player
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(origin + direction * maxDistance, boxSize);        
+        Gizmos.DrawWireCube(origin + direction * maxDistance, boxSize);
     }
 
 }

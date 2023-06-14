@@ -312,13 +312,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 5.77
-  m_Radius: 2.23
+  m_Height: 6.4
+  m_Radius: 2.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.37, z: 0}
+  m_Center: {x: 0, y: 1.65, z: 0}
 --- !u!114 &4489823265877306547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +337,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   boxSize: {x: 2, y: 2, z: 2}
-  sphereSize: 3
   maxDistance: 3
   boxDetect: 0
   origin: {x: 0, y: 0, z: 0}
@@ -388,7 +387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4489823266018472661
 Transform:
   m_ObjectHideFlags: 0
@@ -555,6 +554,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2104094811990947535, guid: c86db2f89cc2e69439f3d892620f5e39,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7650576
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104094811990947535, guid: c86db2f89cc2e69439f3d892620f5e39,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 3.7076552
       objectReference: {fileID: 0}
@@ -622,6 +626,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.294384
+      objectReference: {fileID: 0}
+    - target: {fileID: 7876023681238672744, guid: c86db2f89cc2e69439f3d892620f5e39,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01420093
       objectReference: {fileID: 0}
     - target: {fileID: 7876023681238672744, guid: c86db2f89cc2e69439f3d892620f5e39,
         type: 3}

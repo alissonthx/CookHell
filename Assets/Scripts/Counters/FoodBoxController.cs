@@ -17,9 +17,9 @@ public class FoodBoxController : MonoBehaviour
         counterCollision = GetComponent<CounterCollision>();
     }
 
-    public void OnAnimation(InputAction.CallbackContext context)
-    {
-        if (context.performed && counterCollision._isPlayer)
-            anim.SetTrigger("open");
-    }
+    // public void OnAnimation(InputAction.CallbackContext context)
+    // {
+    //     if (context.performed && counterCollision._isPlayer)
+    //         anim.SetTrigger("open");
+    // }
 }

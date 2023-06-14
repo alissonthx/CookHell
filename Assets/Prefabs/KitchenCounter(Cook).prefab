@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6477489084059884108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -263,7 +263,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 6, y: 6, z: 6}
-  m_Center: {x: 1.5, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6477489084259784539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,9 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267d9360008e8dd43b577c5669f0c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxDetect: 0
   isPlayer: 0
-  boxSize: {x: 2, y: 8, z: 2}
-  maxDistance: -2
+  boxSize: {x: 2, y: 4, z: 2}
+  maxDistance: -2.5
   layerMask:
     serializedVersion: 2
     m_Bits: 1

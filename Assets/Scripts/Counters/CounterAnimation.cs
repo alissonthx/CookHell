@@ -9,7 +9,7 @@ public class CounterAnimation : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void SetTrigger(string triggerName)
