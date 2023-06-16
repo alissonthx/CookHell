@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Vector3 playerVelocity;
     [SerializeField]
-    private float gravityValue = -9.81f;
     private bool groundedPlayer;
+    private float gravityValue = -9.81f;
     private Vector3 movement = Vector3.zero;
     public Vector3 _movement => this.movement;
 
@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        groundedPlayer = true;
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<PlayerAnimation>();
         coll = GetComponent<PlayerCollision>();
@@ -96,9 +97,12 @@ public class PlayerController : MonoBehaviour
         isCounterInteractable = coll._isCounterInteractable;
         isFoodBox = coll._isFoodBox;
 
-        Move();
-
         DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched + "\nisCounter: " + isCounter + "\nisCounterInteractable: " + isCounterInteractable);
+
+        if (groundedPlayer)
+        {
+            Move();
+        }
     }
 
     private void DebugInText(string text)
@@ -108,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        groundedPlayer = controller.isGrounded;
+        // groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
@@ -175,13 +179,25 @@ public class PlayerController : MonoBehaviour
 
         foodInside = true;
         foodCatched = false;
+        Invoke("CutFoodStart", 0.5f);
+    }
+    private void CutFoodStart()
+    {
+        foodOnCounter = true;
+        groundedPlayer = false;
+    }
+
+    private void CutFoodEnd()
+    {
+        groundedPlayer = true;
+        knifeGo.SetActive(false);
     }
 
     public void CutFood()
     {
         anim.SetBool("cut", true);
         knifeGo.SetActive(true);
-        // Invoke("CutFoodEnd", 0.5f);
+        Invoke("CutFoodEnd", 1.5f);
     }
 
     public void OnGetingFood(InputAction.CallbackContext context)
@@ -198,7 +214,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCuttingFood(InputAction.CallbackContext context)
     {
-        if (context.started && foodOnCounter)
+        if (context.started && foodOnCounter && isCounterInteractable)
         {
             CutFood();
         }

@@ -365,6 +365,8 @@ MonoBehaviour:
   isCounterInteractable: 0
   foodCatched: 0
   foodInside: 0
+  foodOnCounter: 0
+  knifeGo: {fileID: 4489823266018472660}
   foodPrefab: {fileID: 2632427326558770606, guid: 025cd6f6e0ed19444badf1b8553b39a6,
     type: 3}
   foodPoint: {fileID: 4489823265427641684}
