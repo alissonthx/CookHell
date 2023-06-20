@@ -67,9 +67,13 @@ public class PlayerController : MonoBehaviour
     private GameObject foodPointOnCounter;
     [SerializeField]
     private GameObject foodGo;
+    [SerializeField]
+    private GameObject dishGo;
 
     [SerializeField]
     private GameObject foodInstance;
+    [SerializeField]
+    private GameObject dishInstance;
     [SerializeField]
     private GameObject counter;
 
@@ -113,10 +117,10 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         // groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
+        // if (groundedPlayer && playerVelocity.y < 0)
+        // {
+        //     playerVelocity.y += gravityValue * Time.deltaTime;
+        // }
 
         Vector3 rawMovement = playerControlls.Player.Movement.ReadValue<Vector2>();
 
@@ -132,6 +136,18 @@ public class PlayerController : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    private void CatchDish()
+    {
+        Debug.Log("CatchDish");
+        if (dishGo == null)
+        {
+            dishGo = dishInstance;
+        }
+
+        anim.SetBool("isCatching", true);
+        dishGo.transform.SetParent(foodPoint.transform);
     }
 
     private void CatchFood()
@@ -184,7 +200,6 @@ public class PlayerController : MonoBehaviour
     private void CutFoodStart()
     {
         foodOnCounter = true;
-        groundedPlayer = false;
     }
 
     private void CutFoodEnd()
@@ -195,6 +210,7 @@ public class PlayerController : MonoBehaviour
 
     public void CutFood()
     {
+        groundedPlayer = false;
         anim.SetBool("cut", true);
         knifeGo.SetActive(true);
         Invoke("CutFoodEnd", 1.5f);
