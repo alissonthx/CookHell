@@ -65,7 +65,7 @@ public class PlayerCollision : MonoBehaviour
         playerControl = GetComponent<PlayerController>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         origin = transform.position;
         direction = transform.forward;

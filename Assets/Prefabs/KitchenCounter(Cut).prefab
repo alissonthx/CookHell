@@ -281,7 +281,7 @@ MonoBehaviour:
   boxDetect: 0
   isPlayer: 0
   boxSize: {x: 2, y: 4, z: 2}
-  maxDistance: -2.5
+  maxDistance: 2.5
   layerMask:
     serializedVersion: 2
     m_Bits: 1

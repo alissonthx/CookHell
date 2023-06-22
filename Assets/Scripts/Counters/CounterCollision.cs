@@ -27,7 +27,7 @@ public class CounterCollision : MonoBehaviour
 
     #endregion
     
-    private void FixedUpdate()
+    private void Update()
     {
         origin = transform.position;
         direction = transform.forward;
