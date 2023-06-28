@@ -8,8 +8,7 @@ public class PlayerCollision : MonoBehaviour
     #region Variables
     private PlayerController controller;
     private PlayerAnimation anim;
-    private PlayerController playerControl;
-    private FoodBoxController foodBoxController;
+    private PlayerController playerControl;    
 
     [Space]
 
@@ -40,6 +39,8 @@ public class PlayerCollision : MonoBehaviour
     [Header("Food")]
     private GameObject foodGo;
     public GameObject _foodGo => this.foodGo;
+    private GameObject dishGo;
+    public GameObject _dishGo => this.dishGo;
     public bool isFood = false;
     public bool _isFood => this.isFood;
 
@@ -55,6 +56,7 @@ public class PlayerCollision : MonoBehaviour
     public bool _isCounterInteractable => this.isCounterInteractable;
     public bool _isFoodBox => this.isFoodBox;
     public bool isFoodBox = false;
+    private bool isDishBox = false;
 
     #endregion
     private void Start()
@@ -88,6 +90,10 @@ public class PlayerCollision : MonoBehaviour
                     CounterBase();
                     isFoodBox = true;
                     break;
+                case "DishBox":
+                    CounterBase();
+                    isDishBox = true;
+                    break;
                 case "Food":
                     Debug.Log("Food");
                     FoodBase();
@@ -105,6 +111,7 @@ public class PlayerCollision : MonoBehaviour
         foodGo = null;
         isFood = false;
         isFoodBox = false;
+        isDishBox = false;
         isCounter = false;
         isCounterInteractable = false;
 
@@ -123,6 +130,12 @@ public class PlayerCollision : MonoBehaviour
     private void FoodBase()
     {
         foodGo = hit.transform.gameObject;
+        isFood = true;
+    }
+
+    private void DishBase()
+    {
+        dishGo = hit.transform.gameObject;
         isFood = true;
     }
 
