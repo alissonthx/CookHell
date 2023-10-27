@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4773226358227089531}
   - component: {fileID: 4773226358227089530}
   - component: {fileID: 4773226358227089528}
+  - component: {fileID: 1223823656971500580}
   m_Layer: 0
   m_Name: Dish
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4773226358227089532}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 21.45, y: 3.15, z: -2.927031}
-  m_LocalScale: {x: 70, y: 70, z: 70}
+  m_LocalScale: {x: 90, y: 90, z: 90}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,3 +98,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.043747324, y: 0.0435607, z: 0.0028731972}
   m_Center: {x: 0, y: 0.00018701793, z: 0.00083659875}
+--- !u!114 &1223823656971500580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4773226358227089532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2eeec63dfcb5145a826d160131fba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  maxDistance: 4
