@@ -2,6 +2,7 @@
 <a href=""><img src="./Assets/img/game-img.png" alt="" /></a>
 <p align="center"> Overcooked inspired 3D game.</p>
 
+<img src="./Assets/img/CookHell.png">
 <img src="./Assets/Gifs/CookHell_anim.gif">
 <img src="./Assets/Gifs/CookHell_Highlight.gif">
 <img src="./Assets/Gifs/CookHell_FoodCatch.gif">
