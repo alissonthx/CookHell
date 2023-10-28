@@ -4,29 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     #region Variables
     private PlayerAnimation anim;
     private PlayerCollision coll;
-    private CharacterController controller;
-    private InputActions playerControlls;
-    private InputActionReference CatchingFood, GetingFood;
-
-    [Header("Player Stats")]
-    [Space]
     [SerializeField]
-    private float playerSpeed;
-    [SerializeField]
-    private Vector3 playerVelocity;
-    [SerializeField]
-    private bool groundedPlayer;
-    private float gravityValue = -9.81f;
-    private Vector3 movement = Vector3.zero;
-    public Vector3 _movement => this.movement;
-
-    [Space]
-    [Space]
+    private GameInput gameInput;
 
     [Header("Debug")]
     [Space]
@@ -34,26 +18,22 @@ public class PlayerController : MonoBehaviour
     private GameObject debug;
 
     [Space]
+    [Header("Stats")]
+    private bool isWalking;
 
     [Header("Food")]
     [Space]
 
     [Space]
     [Header("Bools")]
-    [SerializeField]
-    private bool isFood;
-    [SerializeField]
-    private bool isFoodBox;
-    [SerializeField]
-    private bool isCounter;
-    [SerializeField]
-    private bool isCounterInteractable;
-    [SerializeField]
-    private bool foodCatched = false;
-    [SerializeField]
-    private bool foodInside = false;
-    [SerializeField]
-    private bool foodOnCounter;
+    [SerializeField] private bool boxDetect;
+    [SerializeField] private bool isFood;
+    [SerializeField] private bool isFoodBox;
+    [SerializeField] private bool isCounter;
+    [SerializeField] private bool isCounterInteractable;
+    [SerializeField] private bool foodCatched = false;
+    [SerializeField] private bool foodInside = false;
+    [SerializeField] private bool foodOnCounter;
 
     [Space]
     [Header("GameObjects")]
@@ -76,66 +56,60 @@ public class PlayerController : MonoBehaviour
     private GameObject dishInstance;
     [SerializeField]
     private GameObject counter;
+    private RaycastHit hit;
+    private int maxDistance;
+    private LayerMask layerMask;
+    private float moveSpeed;
 
     #endregion
 
-    private void Awake()
-    {
-        playerControlls = new InputActions();
-    }
-
     private void Start()
     {
-        groundedPlayer = true;
-        controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<PlayerAnimation>();
         coll = GetComponent<PlayerCollision>();
     }
 
+    private void HandleInteractions()
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector3 direction = new Vector3(inputVector.x, 0f, inputVector.y);
+        boxDetect = Physics.Raycast(transform.position, direction, out hit, maxDistance, layerMask);
+    }
+
     private void Update()
     {
-        counter = coll._counter;
-        foodGo = coll._foodGo;
-        isFood = coll._isFood;
-        isCounter = coll._isCounter;
-        isCounterInteractable = coll._isCounterInteractable;
-        isFoodBox = coll._isFoodBox;
+        // counter = coll._counter;
+        // foodGo = coll._foodGo;
+        // isFood = coll._isFood;
+        // isCounter = coll._isCounter;
+        // isCounterInteractable = coll._isCounterInteractable;
+        // isFoodBox = coll._isFoodBox;
 
-        DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched + "\nisCounter: " + isCounter + "\nisCounterInteractable: " + isCounterInteractable);
+        // DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched + "\nisCounter: " + isCounter + "\nisCounterInteractable: " + isCounterInteractable);
 
-        if (groundedPlayer)
-        {
-            Move();
-        }
+        Movement();
+        HandleInteractions();
+    }
+    private void Movement()
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+        transform.position += moveDir * moveSpeed * Time.deltaTime;
+
+        isWalking = moveDir != Vector3.zero;
+
+        float rotateSpeed = 10f;
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+    }
+
+    public bool IsWalking()
+    {
+        return isWalking;
     }
 
     private void DebugInText(string text)
     {
         debug.GetComponent<Text>().text = text;
-    }
-
-    private void Move()
-    {
-        // groundedPlayer = controller.isGrounded;
-        // if (groundedPlayer && playerVelocity.y < 0)
-        // {
-        //     playerVelocity.y += gravityValue * Time.deltaTime;
-        // }
-
-        Vector3 rawMovement = playerControlls.Player.Movement.ReadValue<Vector2>();
-
-        movement.x = rawMovement.x;
-        movement.z = rawMovement.y;
-
-        controller.Move(movement * Time.deltaTime * playerSpeed);
-
-        if (movement != Vector3.zero)
-        {
-            gameObject.transform.forward = movement;
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
     }
 
     private void CatchDish()
@@ -204,13 +178,11 @@ public class PlayerController : MonoBehaviour
 
     private void CutFoodEnd()
     {
-        groundedPlayer = true;
         knifeGo.SetActive(false);
     }
 
     public void CutFood()
     {
-        groundedPlayer = false;
         anim.SetBool("cut", true);
         knifeGo.SetActive(true);
         Invoke("CutFoodEnd", 1.5f);
@@ -258,15 +230,5 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void OnEnable()
-    {
-        playerControlls.Player.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerControlls.Player.Disable();
     }
 }
