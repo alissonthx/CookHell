@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [HideInInspector]
-    public Animator anim; 
-    private PlayerCollision col;
+    public Animator anim;     
 
     void Start()
     {

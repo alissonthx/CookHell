@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     #region Variables
+    public static Player Instance { get; private set; }
     private PlayerAnimation anim;
-    private PlayerCollision coll;
     [SerializeField]
     private GameInput gameInput;
 
@@ -20,13 +21,9 @@ public class Player : MonoBehaviour
     [Space]
     [Header("Stats")]
     private bool isWalking;
-
-    [Header("Food")]
-    [Space]
-
-    [Space]
+    [SerializeField]
+    private float moveSpeed = 28.0f;
     [Header("Bools")]
-    [SerializeField] private bool boxDetect;
     [SerializeField] private bool isFood;
     [SerializeField] private bool isFoodBox;
     [SerializeField] private bool isCounter;
@@ -56,50 +53,147 @@ public class Player : MonoBehaviour
     private GameObject dishInstance;
     [SerializeField]
     private GameObject counter;
-    private RaycastHit hit;
-    private int maxDistance;
-    private LayerMask layerMask;
-    private float moveSpeed;
-
+    [SerializeField]
+    private LayerMask countersLayerMask;
+    private Vector3 lastInteractDir;
+    private Counter selectedCounter;
+    [HideInInspector]
     #endregion
+    public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+    public class OnSelectedCounterChangedEventArgs : EventArgs
+    {
+        public Counter selectedCounter;
+    }
+
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("There is more than one Player instance");
+        }
+        Instance = this;
+    }
 
     private void Start()
     {
         anim = GetComponentInChildren<PlayerAnimation>();
-        coll = GetComponent<PlayerCollision>();
+        gameInput.OnInteractAction += GameInput_OnInteractAction;       
+    }
+
+    private void Update()
+    {
+        HandleMovement();
+        HandleInteractions();
+    }
+
+    private void GameInput_OnInteractAction(object sender, EventArgs e)
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        float interactDistance = 4f;
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out Counter counter))
+            {
+                // has counter
+                counter.Interact();
+            }
+        }
     }
 
     private void HandleInteractions()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-        Vector3 direction = new Vector3(inputVector.x, 0f, inputVector.y);
-        boxDetect = Physics.Raycast(transform.position, direction, out hit, maxDistance, layerMask);
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        float interactDistance = 4f;
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out Counter counter))
+            {
+                // has counter                
+                if (counter != selectedCounter)
+                {
+                    SetSelectedCounter(counter);
+                }
+            }
+            else
+            {
+                SetSelectedCounter(null);
+            }
+        }
+        else
+        {
+            SetSelectedCounter(null);
+        }
+        Debug.Log(selectedCounter);
     }
 
-    private void Update()
-    {
-        // counter = coll._counter;
-        // foodGo = coll._foodGo;
-        // isFood = coll._isFood;
-        // isCounter = coll._isCounter;
-        // isCounterInteractable = coll._isCounterInteractable;
-        // isFoodBox = coll._isFoodBox;
-
-        // DebugInText("isFood: " + isFood + "\nisFoodBox: " + isFoodBox + "\nfoodCatched: " + foodCatched + "\nisCounter: " + isCounter + "\nisCounterInteractable: " + isCounterInteractable);
-
-        Movement();
-        HandleInteractions();
-    }
-    private void Movement()
+    private void HandleMovement()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
 
+        float playerRadius = 2f;
+        float playerHeight = 6f;
+        float moveDistance = moveSpeed * Time.deltaTime;
+        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
         isWalking = moveDir != Vector3.zero;
-
         float rotateSpeed = 10f;
+
+        if (!canMove)
+        {
+            // CapsuleCast to detects
+            Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
+            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+
+            if (canMove)
+            {
+                // can move only on the X 
+                moveDir = moveDirX;
+            }
+            else
+            {
+                Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
+                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
+
+                if (canMove)
+                {
+                    // can move only on the Z
+                    moveDir = moveDirZ;
+                }
+                else
+                {
+                    // Cannot move any direction
+                }
+            }
+        }
+
+        if (canMove)
+        {
+            transform.position += moveDir * moveSpeed * Time.deltaTime;
+        }
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+    }
+
+    private void SetSelectedCounter(Counter selectedCounter)
+    {
+        this.selectedCounter = selectedCounter;
+
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs
+        {
+            selectedCounter = selectedCounter
+        });
     }
 
     public bool IsWalking()
@@ -114,7 +208,7 @@ public class Player : MonoBehaviour
 
     private void CatchDish()
     {
-        Debug.Log("CatchDish");
+        // Debug.Log("CatchDish");
         if (dishGo == null)
         {
             dishGo = dishInstance;

@@ -102,7 +102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6477489083495486271
 Transform:
   m_ObjectHideFlags: 0
@@ -181,6 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a999ce45e7fdd444bc03f162bc9fdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counter: {fileID: 107820329865966130}
+  visualGameObject: {fileID: 897424366430975598}
 --- !u!1 &6477489084059884108
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,8 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6477489084259784537}
   - component: {fileID: 6477489084259784538}
-  - component: {fileID: 6477489084259784539}
-  - component: {fileID: 6477489084259784540}
+  - component: {fileID: 107820329865966130}
   m_Layer: 3
   m_Name: KitchenCounter(Empty)
   m_TagString: NormalBlocks
@@ -260,9 +261,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.7, y: 4.6, z: 6}
-  m_Center: {x: 0, y: 0.25565386, z: -0.09661198}
---- !u!114 &6477489084259784539
+  m_Size: {x: 6.2, y: 6.2, z: 6.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &107820329865966130
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,26 +272,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6477489084259784541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267d9360008e8dd43b577c5669f0c4de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxDetect: 0
-  isPlayer: 0
-  boxSize: {x: 2, y: 4, z: 2}
-  maxDistance: 2.5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
---- !u!114 &6477489084259784540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6477489084259784541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732bf6d9be1580046b20b840f58fe8c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a86fa787738540468504d92717660b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &50985888454855487
@@ -398,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cdc672bb3cac71c459912dcffbc98b05,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1692678886893173015, guid: cdc672bb3cac71c459912dcffbc98b05,
         type: 3}
@@ -415,6 +397,12 @@ PrefabInstance:
 --- !u!4 &522305510864956628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cdc672bb3cac71c459912dcffbc98b05,
+    type: 3}
+  m_PrefabInstance: {fileID: 50985888454855487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &897424366430975598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cdc672bb3cac71c459912dcffbc98b05,
     type: 3}
   m_PrefabInstance: {fileID: 50985888454855487}
   m_PrefabAsset: {fileID: 0}
@@ -480,11 +468,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cdc672bb3cac71c459912dcffbc98b05,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c32a92f4d4fcad14f8c3d65e54706246, type: 2}
+    - target: {fileID: -6689247893377039410, guid: cdc672bb3cac71c459912dcffbc98b05,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc92d39b53faf4d46b16fc4bbf927f8e, type: 2}
     - target: {fileID: 919132149155446097, guid: cdc672bb3cac71c459912dcffbc98b05,
         type: 3}
       propertyPath: m_Name
       value: counter
       objectReference: {fileID: 0}
+    - target: {fileID: 1692678886893173015, guid: cdc672bb3cac71c459912dcffbc98b05,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc92d39b53faf4d46b16fc4bbf927f8e, type: 2}
+    - target: {fileID: 4866502613925277386, guid: cdc672bb3cac71c459912dcffbc98b05,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c32a92f4d4fcad14f8c3d65e54706246, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc672bb3cac71c459912dcffbc98b05, type: 3}
 --- !u!4 &5537110671869623453 stripped

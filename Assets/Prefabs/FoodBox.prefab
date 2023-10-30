@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3782243553573751019}
   - component: {fileID: 3782243553573751012}
-  - component: {fileID: 8938305655496116990}
-  - component: {fileID: 4702588761873789361}
+  - component: {fileID: 6640637710340934905}
   m_Layer: 3
   m_Name: FoodBox
   m_TagString: FoodBox
@@ -48,9 +47,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.6506968, y: 4.5490246, z: 5.752367}
-  m_Center: {x: -0.00000047683716, y: -0.010166645, z: 0.010167122}
---- !u!114 &8938305655496116990
+  m_Size: {x: 6.2, y: 6.2, z: 6.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6640637710340934905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,19 +58,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3782243553573751018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267d9360008e8dd43b577c5669f0c4de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4702588761873789361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3782243553573751018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732bf6d9be1580046b20b840f58fe8c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a86fa787738540468504d92717660b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5563566583621122182
@@ -114,13 +101,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117939833191224125}
+  - component: {fileID: 4025444295682844022}
   m_Layer: 3
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2117939833191224125
 Transform:
   m_ObjectHideFlags: 0
@@ -137,6 +125,20 @@ Transform:
   m_Father: {fileID: 3782243553573751019}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4025444295682844022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7186986642976217251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a999ce45e7fdd444bc03f162bc9fdbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: {fileID: 6640637710340934905}
+  visualGameObject: {fileID: 6739422833832659719}
 --- !u!1 &7214091808056201596
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,6 +314,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: foodBox
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93c0a738a5cc11e49bd09bb42f1c777a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2328169485041697687, guid: 93c0a738a5cc11e49bd09bb42f1c777a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -322,6 +329,12 @@ PrefabInstance:
 --- !u!4 &6254635601240314301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93c0a738a5cc11e49bd09bb42f1c777a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5856461332790752854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6739422833832659719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 93c0a738a5cc11e49bd09bb42f1c777a,
     type: 3}
   m_PrefabInstance: {fileID: 5856461332790752854}
   m_PrefabAsset: {fileID: 0}

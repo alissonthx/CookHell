@@ -1,14 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class SelectedVisual : MonoBehaviour
 {
-    public void SetSelected(bool state){
-        if(this == null){
-            return;
+    [SerializeField] private Counter counter;
+    [SerializeField] private GameObject visualGameObject;
+    private void Start()
+    {
+        Player.Instance.OnSelectedCounterChanged += Player_OnSelectedCounterChanged;
+    }
+    
+    private void Player_OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
+    {
+        if (e.selectedCounter == counter)
+        {
+            Show();
         }
-        gameObject.SetActive(state);
+        else
+        {
+            Hide();
+        }
     }
 
+    private void Show()
+    {
+        visualGameObject.SetActive(true);
+    }
+
+    private void Hide()
+    {
+        visualGameObject.SetActive(false);
+    }
 }
