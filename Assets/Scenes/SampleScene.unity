@@ -2671,8 +2671,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: KitchenCounter(Cook)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6477489084259784540, guid: 5191192c828ce714087dc1de09943e3d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5191192c828ce714087dc1de09943e3d, type: 3}
 --- !u!850595691 &1149556466
 LightingSettings:
@@ -4421,8 +4420,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8385891274738846752, guid: 00d57f129f5508d47b3811958d094c94, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00d57f129f5508d47b3811958d094c94, type: 3}
 --- !u!1001 &3782243554272857180
 PrefabInstance:
@@ -4491,8 +4489,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4702588761873789361, guid: aec8445f8b239104ca8e2d1329eb299d, type: 3}
+    - target: {fileID: 6640637710340934905, guid: aec8445f8b239104ca8e2d1329eb299d,
+        type: 3}
+      propertyPath: kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: a90bef3811b489e4d97be0588b417a07,
+        type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aec8445f8b239104ca8e2d1329eb299d, type: 3}
 --- !u!1001 &4071023803829730790
 PrefabInstance:

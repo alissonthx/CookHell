@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CounterAnimation : MonoBehaviour
 {
-    [HideInInspector]
-    public Animator anim;
+    private Animator anim;
 
     private void Start()
     {

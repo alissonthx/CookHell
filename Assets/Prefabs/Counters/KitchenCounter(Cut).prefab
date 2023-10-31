@@ -277,6 +277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a86fa787738540468504d92717660b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lettucePrefab: {fileID: 1678831336422135799, guid: cfc2c1b70fa1613459c174427be234eb,
+    type: 3}
+  counterPoint: {fileID: 6477489084059884107}
 --- !u!1001 &706536994795941377
 PrefabInstance:
   m_ObjectHideFlags: 0
