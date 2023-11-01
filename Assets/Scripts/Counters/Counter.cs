@@ -8,31 +8,19 @@ public class Counter : MonoBehaviour, IKitchenObjectParent
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterPoint;
     private KitchenObject kitchenObject;
-    [SerializeField] private bool testing;
-    [SerializeField] private Counter secondCounter;
-
-    private void Update()
-    {
-        if (testing && Input.GetKeyDown(KeyCode.T))
-        {
-            if (kitchenObject != null)
-            {
-                kitchenObject.SetCounter(secondCounter);
-            }
-        }
-    }
-
+   
     // interact to instantiate food in blocks, need to change the object parent to player parent
-    public void Interact()
+    public void Interact(Player player)
     {
         if (kitchenObject == null)
         {
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab, counterPoint);
-            kitchenObjectTransform.GetComponent<KitchenObject>().SetCounter(this);
+            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
         }
         else
         {
-            Debug.Log(kitchenObject.GetCounter());
+            // Give the object to the player
+            kitchenObject.SetKitchenObjectParent(player);
         }
     }
 
@@ -58,10 +46,5 @@ public class Counter : MonoBehaviour, IKitchenObjectParent
     public Transform GetKitchenObjectFollowTransform()
     {
         return counterPoint;
-    }
-
-    public void SetKitchenObject()
-    {
-        throw new NotImplementedException();
     }
 }

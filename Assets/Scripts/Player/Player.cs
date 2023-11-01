@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKitchenObjectParent
 {
     #region Variables
     public static Player Instance { get; private set; }
@@ -23,47 +23,51 @@ public class Player : MonoBehaviour
     private bool isWalking;
     [SerializeField]
     private float moveSpeed = 28.0f;
-    [Header("Bools")]
-    [SerializeField] private bool isFood;
-    [SerializeField] private bool isFoodBox;
-    [SerializeField] private bool isCounter;
-    [SerializeField] private bool isCounterInteractable;
-    [SerializeField] private bool foodCatched = false;
-    [SerializeField] private bool foodInside = false;
-    [SerializeField] private bool foodOnCounter;
 
-    [Space]
-    [Header("GameObjects")]
-    [SerializeField]
-    private GameObject knifeGo;
-    [SerializeField]
-    private GameObject foodPrefab;
-    [SerializeField]
-    private GameObject foodPoint;
-    [SerializeField]
-    private GameObject foodPointOnCounter;
-    [SerializeField]
-    private GameObject foodGo;
-    [SerializeField]
-    private GameObject dishGo;
+    // [Header("Bools")]
+    // [SerializeField] private bool isFood;
+    // [SerializeField] private bool isFoodBox;
+    // [SerializeField] private bool isCounter;
+    // [SerializeField] private bool isCounterInteractable;
+    // [SerializeField] private bool foodCatched = false;
+    // [SerializeField] private bool foodInside = false;
+    // [SerializeField] private bool foodOnCounter;
+    // [Space]
+    // [Header("GameObjects")]
+    // [SerializeField]
+    // private GameObject knifeGo;
+    // [SerializeField]
+    // private GameObject foodPrefab;
+    // [SerializeField]
+    // private GameObject foodPoint;
+    // [SerializeField]
+    // private GameObject foodPointOnCounter;
+    // [SerializeField]
+    // private GameObject foodGo;
+    // [SerializeField]
+    // private GameObject dishGo;
 
-    [SerializeField]
-    private GameObject foodInstance;
-    [SerializeField]
-    private GameObject dishInstance;
-    [SerializeField]
-    private GameObject counter;
+    // [SerializeField]
+    // private GameObject foodInstance;
+    // [SerializeField]
+    // private GameObject dishInstance;
+    // [SerializeField]
+    // private GameObject counter;
+    private KitchenObject kitchenObject;
+    [SerializeField] private Transform kitchenObjectHoldPoint;
+
     [SerializeField]
     private LayerMask countersLayerMask;
     private Vector3 lastInteractDir;
     private Counter selectedCounter;
     [HideInInspector]
-    #endregion
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
         public Counter selectedCounter;
     }
+
+    #endregion
 
 
     private void Awake()
@@ -78,7 +82,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<PlayerAnimation>();
-        gameInput.OnInteractAction += GameInput_OnInteractAction;       
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
 
     private void Update()
@@ -103,7 +107,7 @@ public class Player : MonoBehaviour
             if (raycastHit.transform.TryGetComponent(out Counter counter))
             {
                 // has counter
-                counter.Interact();
+                counter.Interact(this);
             }
         }
     }
@@ -137,7 +141,7 @@ public class Player : MonoBehaviour
         else
         {
             SetSelectedCounter(null);
-        }        
+        }
     }
 
     // movement and detect of colisions using capsule cast
@@ -203,128 +207,149 @@ public class Player : MonoBehaviour
         return isWalking;
     }
 
-    private void DebugInText(string text)
+    public void SetKitchenObject(KitchenObject kitchenObject)
     {
-        debug.GetComponent<Text>().text = text;
+        this.kitchenObject = kitchenObject;
+    }
+    public KitchenObject GetKitchenObject()
+    {
+        return kitchenObject;
     }
 
-    private void CatchDish()
+    public void ClearKitchenObject()
     {
-        // Debug.Log("CatchDish");
-        if (dishGo == null)
-        {
-            dishGo = dishInstance;
-        }
-
-        anim.SetBool("isCatching", true);
-        dishGo.transform.SetParent(foodPoint.transform);
+        kitchenObject = null;
     }
 
-    private void CatchFood()
+    public bool HasKitchenObject()
     {
-        // Debug.Log("CatchFood");
-        if (foodGo == null)
-        {
-            foodGo = foodInstance;
-        }
-        anim.SetBool("isCatching", true);
-
-        foodGo.transform.SetParent(foodPoint.transform);
-        foodGo.transform.position = foodPoint.transform.position;
-        foodGo.GetComponent<Rigidbody>().isKinematic = true;
-        foodGo.GetComponent<Collider>().enabled = false;
-        foodCatched = true;
+        return kitchenObject != null;
     }
 
-    private void DropFood()
+    public Transform GetKitchenObjectFollowTransform()
     {
-        if (foodGo == null)
-        {
-            foodGo = foodInstance;
-        }
-        anim.SetBool("isCatching", false);
-
-        foodGo.transform.SetParent(null);
-        foodGo.transform.position = transform.position + transform.forward * 2f;
-        foodGo.GetComponent<Rigidbody>().isKinematic = false;
-        foodGo.GetComponent<Collider>().enabled = true;
-        foodCatched = false;
+        return kitchenObjectHoldPoint;
     }
 
-    public void DropOnCounter(GameObject foodOnPlayer)
-    {
-        anim.SetBool("isCatching", false);
+    // Old code, need to refact =====================================================
 
-        foodPointOnCounter = counter.transform.Find("FoodPoint").gameObject;
+    // private void CatchDish()
+    // {
+    //     // Debug.Log("CatchDish");
+    //     if (dishGo == null)
+    //     {
+    //         dishGo = dishInstance;
+    //     }
 
-        foodOnPlayer.transform.SetParent(foodPointOnCounter.transform);
-        foodOnPlayer.transform.position = foodPointOnCounter.transform.position;
+    //     anim.SetBool("isCatching", true);
+    //     dishGo.transform.SetParent(foodPoint.transform);
+    // }
 
-        foodOnPlayer.GetComponent<Rigidbody>().isKinematic = true;
-        foodOnPlayer.GetComponent<Collider>().enabled = false;
+    // private void CatchFood()
+    // {
+    //     // Debug.Log("CatchFood");
+    //     if (foodGo == null)
+    //     {
+    //         foodGo = foodInstance;
+    //     }
+    //     anim.SetBool("isCatching", true);
 
-        foodInside = true;
-        foodCatched = false;
-        Invoke("CutFoodStart", 0.5f);
-    }
-    private void CutFoodStart()
-    {
-        foodOnCounter = true;
-    }
+    //     foodGo.transform.SetParent(foodPoint.transform);
+    //     foodGo.transform.position = foodPoint.transform.position;
+    //     foodGo.GetComponent<Rigidbody>().isKinematic = true;
+    //     foodGo.GetComponent<Collider>().enabled = false;
+    //     foodCatched = true;
+    // }
 
-    private void CutFoodEnd()
-    {
-        knifeGo.SetActive(false);
-    }
+    // private void DropFood()
+    // {
+    //     if (foodGo == null)
+    //     {
+    //         foodGo = foodInstance;
+    //     }
+    //     anim.SetBool("isCatching", false);
 
-    public void CutFood()
-    {
-        anim.SetBool("cut", true);
-        knifeGo.SetActive(true);
-        Invoke("CutFoodEnd", 1.5f);
-    }
+    //     foodGo.transform.SetParent(null);
+    //     foodGo.transform.position = transform.position + transform.forward * 2f;
+    //     foodGo.GetComponent<Rigidbody>().isKinematic = false;
+    //     foodGo.GetComponent<Collider>().enabled = true;
+    //     foodCatched = false;
+    // }
 
-    public void OnGetingFood(InputAction.CallbackContext context)
-    {
-        // Debug.Log("GetFood");
-        if (context.started && isFoodBox)
-        {
-            counter.transform.Find("Visual").gameObject.GetComponent<CounterAnimation>().SetTrigger("open");
-            foodInstance = Instantiate(foodPrefab, foodPoint.transform.position, Quaternion.identity);
-            Invoke("CatchFood", 0.1f);
-            foodGo = null;
-        }
-    }
+    // public void DropOnCounter(GameObject foodOnPlayer)
+    // {
+    //     anim.SetBool("isCatching", false);
 
-    public void OnCuttingFood(InputAction.CallbackContext context)
-    {
-        if (context.started && foodOnCounter && isCounterInteractable)
-        {
-            CutFood();
-        }
-    }
+    //     foodPointOnCounter = counter.transform.Find("FoodPoint").gameObject;
 
-    public void OnCatchingFood(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (isFood && !foodCatched)
-            {
-                // Debug.Log("Catch started");
-                CatchFood();
-            }
-            else if (foodCatched)
-            {
-                if (isCounter || isCounterInteractable)
-                {
-                    if (!foodInside)
-                        DropOnCounter(foodInstance);
-                }
-                else
-                {
-                    DropFood();
-                }
-            }
-        }
-    }
+    //     foodOnPlayer.transform.SetParent(foodPointOnCounter.transform);
+    //     foodOnPlayer.transform.position = foodPointOnCounter.transform.position;
+
+    //     foodOnPlayer.GetComponent<Rigidbody>().isKinematic = true;
+    //     foodOnPlayer.GetComponent<Collider>().enabled = false;
+
+    //     foodInside = true;
+    //     foodCatched = false;
+    //     Invoke("CutFoodStart", 0.5f);
+    // }
+    // private void CutFoodStart()
+    // {
+    //     foodOnCounter = true;
+    // }
+
+    // private void CutFoodEnd()
+    // {
+    //     knifeGo.SetActive(false);
+    // }
+
+    // public void CutFood()
+    // {
+    //     anim.SetBool("cut", true);
+    //     knifeGo.SetActive(true);
+    //     Invoke("CutFoodEnd", 1.5f);
+    // }
+
+    // public void OnGetingFood(InputAction.CallbackContext context)
+    // {
+    //     // Debug.Log("GetFood");
+    //     if (context.started && isFoodBox)
+    //     {
+    //         counter.transform.Find("Visual").gameObject.GetComponent<CounterAnimation>().SetTrigger("open");
+    //         foodInstance = Instantiate(foodPrefab, foodPoint.transform.position, Quaternion.identity);
+    //         Invoke("CatchFood", 0.1f);
+    //         foodGo = null;
+    //     }
+    // }
+
+    // public void OnCuttingFood(InputAction.CallbackContext context)
+    // {
+    //     if (context.started && foodOnCounter && isCounterInteractable)
+    //     {
+    //         CutFood();
+    //     }
+    // }
+
+    // public void OnCatchingFood(InputAction.CallbackContext context)
+    // {
+    //     if (context.performed)
+    //     {
+    //         if (isFood && !foodCatched)
+    //         {
+    //             // Debug.Log("Catch started");
+    //             CatchFood();
+    //         }
+    //         else if (foodCatched)
+    //         {
+    //             if (isCounter || isCounterInteractable)
+    //             {
+    //                 if (!foodInside)
+    //                     DropOnCounter(foodInstance);
+    //             }
+    //             else
+    //             {
+    //                 DropFood();
+    //             }
+    //         }
+    //     }
+    // }
 }
