@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58aeb79f012bdaf41808d75fbadf63cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countainerCounter: {fileID: 6130653315011940411}
 --- !u!95 &3017908311678348862
 Animator:
   serializedVersion: 5
@@ -571,7 +572,7 @@ PrefabInstance:
     - target: {fileID: 6477489084259784541, guid: f869bdfa42dbe6445ae677694b9ab3a1,
         type: 3}
       propertyPath: m_Name
-      value: CounteinerCounter
+      value: ConteinerCounter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f869bdfa42dbe6445ae677694b9ab3a1, type: 3}
@@ -599,8 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e5228f244d1d0489260040ff73cd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: 4969528c2be96ea40bedd1c8f4b6e082, type: 2}
   counterPoint: {fileID: 8564085084565963313}
+  kitchenObjectSO: {fileID: 11400000, guid: 4969528c2be96ea40bedd1c8f4b6e082, type: 2}
 --- !u!4 &8564085084565963313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6477489084059884107, guid: f869bdfa42dbe6445ae677694b9ab3a1,
