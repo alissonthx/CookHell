@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
         HandleInteractions();
     }
 
+    // game input keys interact with counter blocks
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
@@ -107,6 +108,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // effect selected on counters
     private void HandleInteractions()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
@@ -121,7 +123,7 @@ public class Player : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out Counter counter))
             {
-                // has counter                
+                // if has counter                
                 if (counter != selectedCounter)
                 {
                     SetSelectedCounter(counter);
@@ -135,10 +137,10 @@ public class Player : MonoBehaviour
         else
         {
             SetSelectedCounter(null);
-        }
-        Debug.Log(selectedCounter);
+        }        
     }
 
+    // movement and detect of colisions using capsule cast
     private void HandleMovement()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();

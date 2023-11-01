@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1678831336422135799}
+  - component: {fileID: 8538987325120888769}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
@@ -63,6 +64,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8538987325120888769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4462166424155884600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d0c1ebc3b95ba42ac269c07d957b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kitchenObjectSO: {fileID: 11400000, guid: 4969528c2be96ea40bedd1c8f4b6e082, type: 2}
+  counter: {fileID: 0}
 --- !u!1 &9146466578923489357
 GameObject:
   m_ObjectHideFlags: 0
