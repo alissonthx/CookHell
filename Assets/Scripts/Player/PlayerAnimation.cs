@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [HideInInspector]
-    public Animator anim;     
+    private Animator anim;
+    [SerializeField] private GameInput gameInput;
+    private string GRAB = "Grab";
 
-    void Start()
+    private void Awake()
     {
-        anim = GetComponent<Animator>();        
+        anim = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Start()
+    {
+        gameInput.OnInteractAction += OnInteractAction_OnPlayerGrabObject;
+    }
+
+    private void Update()
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
@@ -24,11 +30,8 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    public void SetBool(string name, bool value){
-        anim.SetBool(name, value);
-    }
-
-    public void SetTrigger(string name){
-        anim.SetTrigger(name);
+    private void OnInteractAction_OnPlayerGrabObject(object sender, System.EventArgs e)
+    {
+        anim.SetTrigger(GRAB);
     }
 }

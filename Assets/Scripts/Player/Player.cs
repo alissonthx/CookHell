@@ -8,6 +8,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 {
     #region Variables
     public static Player Instance { get; private set; }
+    public Action<object, EventArgs> OnPlayerGrabObject { get; internal set; }
+
     private PlayerAnimation anim;
     [SerializeField]
     private GameInput gameInput;
@@ -63,7 +65,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     // game input keys interact with counter blocks
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
-        if(selectedCounter != null){
+        if (selectedCounter != null)
+        {
             selectedCounter.Interact(this);
         }
     }
@@ -185,5 +188,5 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public Transform GetKitchenObjectFollowTransform()
     {
         return kitchenObjectHoldPoint;
-    }    
+    }
 }

@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39145f782771f4241a73340b7d002d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 4489823265877306546}
 --- !u!1 &3685360015566143674
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,7 +5006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f338de7a03f6e824b8d30e00b0b878a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  gameInput: {fileID: 649365526}
 --- !u!1 &4489823265284875780
 GameObject:
   m_ObjectHideFlags: 0
@@ -5192,22 +5191,7 @@ MonoBehaviour:
   gameInput: {fileID: 649365526}
   debug: {fileID: 0}
   moveSpeed: 28
-  isFood: 0
-  isFoodBox: 0
-  isCounter: 0
-  isCounterInteractable: 0
-  foodCatched: 0
-  foodInside: 0
-  foodOnCounter: 0
-  knifeGo: {fileID: 0}
-  foodPrefab: {fileID: 0}
-  foodPoint: {fileID: 4489823265427641684}
-  foodPointOnCounter: {fileID: 0}
-  foodGo: {fileID: 0}
-  dishGo: {fileID: 0}
-  foodInstance: {fileID: 0}
-  dishInstance: {fileID: 0}
-  counter: {fileID: 0}
+  kitchenObjectHoldPoint: {fileID: 4489823265427641685}
   countersLayerMask:
     serializedVersion: 2
     m_Bits: 8
