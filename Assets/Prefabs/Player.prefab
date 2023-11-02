@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &649365524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 649365525}
+  - component: {fileID: 649365526}
+  m_Layer: 0
+  m_Name: GameInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &649365525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649365524}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 43.086666, y: -1.0866667, z: 5}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4489823265877306548}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &649365526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649365524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39145f782771f4241a73340b7d002d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3685360015566143674
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,7 +70,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3685360015566143674}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.2, z: -1.2}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116,7 +160,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -667,9 +711,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
+    m_Position: {x: 0, y: 2, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Scale: {x: 4, y: 4, z: 4}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -748,7 +792,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -920,7 +964,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 3
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -984,7 +1028,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.9542694
           inSlope: -2
           outSlope: -2
           tangentMode: 0
@@ -4962,7 +5006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f338de7a03f6e824b8d30e00b0b878a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  gameInput: {fileID: 649365526}
 --- !u!1 &4489823265284875780
 GameObject:
   m_ObjectHideFlags: 0
@@ -5087,8 +5131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4489823265877306548}
   - component: {fileID: 4489823265877306546}
-  - component: {fileID: 4489823265877306547}
-  - component: {fileID: 4489823265877306542}
+  - component: {fileID: 9039848774019941811}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5103,17 +5146,18 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4489823265877306551}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.045507126, y: 2.14, z: -16.21}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.4, y: 1.63, z: -7.5}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4489823265261263174}
   - {fileID: 4489823265427641685}
   - {fileID: 5457761063060477113}
+  - {fileID: 649365525}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &4489823265877306546
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5132,7 +5176,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.65, z: 0}
---- !u!114 &4489823265877306547
+--- !u!114 &9039848774019941811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5141,54 +5185,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4489823265877306551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902f0527c6dc6554b97c20f747e31b74, type: 3}
+  m_Script: {fileID: 11500000, guid: 12f7c71a41785de42b048df3f1da8693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coll: {fileID: 0}
-  force: 12
-  layerMask:
+  gameInput: {fileID: 649365526}
+  debug: {fileID: 0}
+  moveSpeed: 28
+  kitchenObjectHoldPoint: {fileID: 4489823265427641685}
+  countersLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  boxSize: {x: 2, y: 2, z: 2}
-  maxDistance: 3
-  boxDetect: 0
-  origin: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
-  isFood: 0
-  isFoodBox: 0
---- !u!114 &4489823265877306542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489823265877306551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c43d89aba5ea3b4486cae4cc3457386, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSpeed: 20
-  playerVelocity: {x: 0, y: 0, z: 0}
-  groundedPlayer: 0
-  debug: {fileID: 0}
-  isFood: 0
-  isFoodBox: 0
-  isCounter: 0
-  isCounterInteractable: 0
-  foodCatched: 0
-  foodInside: 0
-  foodOnCounter: 0
-  knifeGo: {fileID: 4489823266018472660}
-  foodPrefab: {fileID: 2632427326558770606, guid: 025cd6f6e0ed19444badf1b8553b39a6,
-    type: 3}
-  foodPoint: {fileID: 4489823265427641684}
-  foodPointOnCounter: {fileID: 0}
-  foodGo: {fileID: 0}
-  dishGo: {fileID: 0}
-  foodInstance: {fileID: 0}
-  dishInstance: {fileID: 0}
-  counter: {fileID: 0}
 --- !u!1 &4489823266018472660
 GameObject:
   m_ObjectHideFlags: 0

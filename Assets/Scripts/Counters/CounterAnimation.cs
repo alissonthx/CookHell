@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class CounterAnimation : MonoBehaviour
 {
-    [HideInInspector]
-    public Animator anim;
+    private const string OPEN_CLOSE = "OpenClose";
+    private Animator anim;
+    [SerializeField] private ContainerCounter countainerCounter;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        countainerCounter.OnPlayerGrabObject += ContainerCounter_OnPlayerGrabObject;
     }
 
-    public void SetTrigger(string triggerName)
+    private void ContainerCounter_OnPlayerGrabObject(object sender, System.EventArgs e)
     {
-        anim.SetTrigger(triggerName);
+        anim.SetTrigger(OPEN_CLOSE);
     }
 }
