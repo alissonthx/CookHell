@@ -13,14 +13,17 @@ public class KitchenObject : MonoBehaviour
     }
 
     // Set the
-    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent){
-        if(this.kitchenObjectParent != null){
+    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent)
+    {
+        if (this.kitchenObjectParent != null)
+        {
             this.kitchenObjectParent.ClearKitchenObject();
         }
 
         this.kitchenObjectParent = kitchenObjectParent;
 
-        if(kitchenObjectParent.HasKitchenObject()){
+        if (kitchenObjectParent.HasKitchenObject())
+        {
             Debug.LogError("Counter already has a kitchenObject!");
         }
         kitchenObjectParent.SetKitchenObject(this);
@@ -29,7 +32,24 @@ public class KitchenObject : MonoBehaviour
         transform.localPosition = Vector3.zero;
     }
 
-    public IKitchenObjectParent GetKitchenObjectParent(){
+    public IKitchenObjectParent GetKitchenObjectParent()
+    {
         return kitchenObjectParent;
+    }
+
+    public void DestroySelf()
+    {
+        kitchenObjectParent.ClearKitchenObject();
+        Destroy(gameObject);
+    }
+
+    public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
+    {
+        // instantiate prefab object and set object parent to player
+        Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
+        KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
+        kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
+        
+        return kitchenObject;
     }
 }

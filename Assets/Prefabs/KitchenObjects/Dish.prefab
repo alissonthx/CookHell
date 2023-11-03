@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4773226358227089533}
   - component: {fileID: 8427000381113304016}
-  - component: {fileID: 5000017881739375500}
   m_Layer: 0
   m_Name: Dish
   m_TagString: Untagged
@@ -130,19 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kitchenObjectSO: {fileID: 11400000, guid: e8457453672a74f4da388f82a42370c2, type: 2}
---- !u!65 &5000017881739375500
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4773226358227089532}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.1091495, y: 3.0749097, z: 0.26727605}
-  m_Center: {x: 0.006848097, y: 0.010271668, z: 0.06505498}
 --- !u!1 &5531665606559150000
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class GameInput : MonoBehaviour
 
     #endregion
     public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractAlternateAction;
 
     private void Awake()
     {
@@ -22,6 +23,12 @@ public class GameInput : MonoBehaviour
         OnEnable();
 
         playerControlls.Player.Interact.performed += Interact_performed;
+        playerControlls.Player.InteractAlternate.performed += InteractAlternate_performed;
+    }
+
+    private void InteractAlternate_performed(InputAction.CallbackContext context)
+    {
+        OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj){

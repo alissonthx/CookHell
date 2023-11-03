@@ -6,17 +6,19 @@ using UnityEngine;
 public class ContainerCounter : BaseCounter
 {
     public event EventHandler OnPlayerGrabObject;
-    [SerializeField] private KitchenObjectSO kitchenObjectSO;    
-    
+    [SerializeField] private KitchenObjectSO kitchenObjectSO;
+
     // interact to instantiate food in blocks, need to change the object parent to player parent
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
         {
-            Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
-            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
+            if (!player.HasKitchenObject())
+            {
+                KitchenObject.SpawnKitchenObject(kitchenObjectSO, player);
 
-            OnPlayerGrabObject?.Invoke(this, EventArgs.Empty);
-        }        
+                OnPlayerGrabObject?.Invoke(this, EventArgs.Empty);
+            }
+        }
     }
 }
