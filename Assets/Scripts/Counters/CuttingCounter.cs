@@ -1,14 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Counter : BaseCounter
+public class CuttingCounter : BaseCounter
 {
-    [SerializeField] private KitchenObjectSO kitchenObjectSO;
-
-
-    // interact to instantiate food in blocks, need to change the object parent to player parent
+    [SerializeField] private KitchenObjectSO cutKitchenObjectSO;
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
@@ -29,10 +25,25 @@ public class Counter : BaseCounter
             if (player.HasKitchenObject())
             {
                 // player is carrying something
-            }else{
+            }
+            else
+            {
                 // player is not carrying anything
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }
     }
+    public override void InteractAlternate(Player player)
+    {
+        if (HasKitchenObject())
+        {
+            // there is Kitchen object here
+            GetKitchenObject().DestroySelf();
+            
+            // instantiate prefab object and set object parent to player
+            Transform kitchenObjectTransform = Instantiate(cutKitchenObjectSO.prefab);
+            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
+        }
+    }
 }
+

@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator anim;
+    [SerializeField] private Player player;
     [SerializeField] private GameInput gameInput;
     private string GRAB = "Grab";
+    private string RELEASE = "Release";
+    private string IS_WALKING = "isWalking";
 
     private void Awake()
     {
@@ -22,16 +25,23 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
-            anim.SetBool("isWalking", true);
+            anim.SetBool(IS_WALKING, true);
         }
         else
         {
-            anim.SetBool("isWalking", false);
+            anim.SetBool(IS_WALKING, false);
         }
     }
 
     private void OnInteractAction_OnPlayerGrabObject(object sender, System.EventArgs e)
     {
-        anim.SetTrigger(GRAB);
+        if (!player.HasKitchenObject())
+        {
+            anim.SetTrigger(GRAB);
+        }
+        else
+        {
+            anim.SetTrigger(RELEASE);
+        }
     }
 }
