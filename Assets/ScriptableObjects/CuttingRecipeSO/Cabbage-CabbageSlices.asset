@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b882e9d42a24d4a847954ad3923691, type: 3}
-  m_Name: Lettuce
+  m_Script: {fileID: 11500000, guid: 7fdc4c05cd8905d4dbddfeef9c033e11, type: 3}
+  m_Name: Cabbage-CabbageSlices
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1678831336422135799, guid: cfc2c1b70fa1613459c174427be234eb, type: 3}
-  sprite: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
-  objectName: Lettuce Block
+  input: {fileID: 11400000, guid: a90bef3811b489e4d97be0588b417a07, type: 2}
+  output: {fileID: 11400000, guid: 2db061f8b5e665246a5c47f8e38ea70e, type: 2}

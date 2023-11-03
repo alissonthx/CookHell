@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5b882e9d42a24d4a847954ad3923691, type: 3}
-  m_Name: TomatoSliced
+  m_Name: TomatoSlices
   m_EditorClassIdentifier: 
   prefab: {fileID: 1678831336422135799, guid: 0bfeb59c2e5e7b146a15eaa1171746da, type: 3}
   sprite: {fileID: 21300000, guid: 3f00d967d25cc67478e82eadfe591841, type: 3}
