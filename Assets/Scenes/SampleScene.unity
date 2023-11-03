@@ -1593,7 +1593,7 @@ PrefabInstance:
     - target: {fileID: 8564085084500315943, guid: d93b439eda8dedc4e8da16f55f49669b,
         type: 3}
       propertyPath: m_Name
-      value: ConteinerCounter (Lettuce)
+      value: ConteinerCounter (Cabbage)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93b439eda8dedc4e8da16f55f49669b, type: 3}
@@ -2898,6 +2898,23 @@ PrefabInstance:
       propertyPath: cutKitchenObjectSO
       value: 
       objectReference: {fileID: 11400000, guid: a8bac985302699f48942233b2bb57487,
+        type: 2}
+    - target: {fileID: 3466952254488954239, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: cuttingRecipeSOArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3466952254488954239, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: cuttingRecipeSOArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: fd3ba2a339aed0d4685cd6d4901c5748,
+        type: 2}
+    - target: {fileID: 3466952254488954239, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: cuttingRecipeSOArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: eaf89ce57e02306488de9a98e25e26d5,
         type: 2}
     - target: {fileID: 7452998337460775291, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
         type: 3}
