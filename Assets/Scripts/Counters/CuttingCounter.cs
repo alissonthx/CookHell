@@ -64,12 +64,8 @@ public class CuttingCounter : BaseCounter
     // function to check if have input to food, to be able to cut
     private bool HasRecipeWithInput(KitchenObjectSO inputKitchenObjectSO)
     {
-        foreach (CuttingRecipeSO cuttingRecipeSO in cuttingRecipeSOArray)
-        {
-            if (cuttingRecipeSO.input == inputKitchenObjectSO)
-                return true;
-        }
-        return false;
+        CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
+        return cuttingRecipeSO != null;
     }
 
     private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
@@ -83,25 +79,16 @@ public class CuttingCounter : BaseCounter
         {
             return null;
         }
-        // foreach (CuttingRecipeSO cuttingRecipeSO in cuttingRecipeSOArray)
-        // {
-        //     if (cuttingRecipeSO.input == inputKitchenObjectSO)
-        //         return cuttingRecipeSO.output;
-        // }
-        // return null;
     }
 
     private CuttingRecipeSO GetCuttingRecipeSOWithInput(KitchenObjectSO inputKitchenObjectSO)
     {
-        CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
-        if (cuttingRecipeSO != null)
+        foreach (CuttingRecipeSO cuttingRecipeSO in cuttingRecipeSOArray)
         {
-            return cuttingRecipeSO;
+            if (cuttingRecipeSO.input == inputKitchenObjectSO)
+                return cuttingRecipeSO;
         }
-        else
-        {
-            return null;
-        }
+        return null;
     }
 }
 
