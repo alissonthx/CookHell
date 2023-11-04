@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GameInput : MonoBehaviour
 {
     #region Variables
-    private InputActions playerControlls;    
+    private InputActions playerControlls;
 
     [Header("Player Stats")]
     private Vector3 movement = Vector3.zero;
@@ -31,7 +31,8 @@ public class GameInput : MonoBehaviour
         OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
     }
 
-    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj){
+    private void Interact_performed(InputAction.CallbackContext obj)
+    {
         OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
 
