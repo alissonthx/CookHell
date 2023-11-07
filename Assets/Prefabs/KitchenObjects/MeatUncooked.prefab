@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8538987325120888769}
   - component: {fileID: 7969449136227533829}
   m_Layer: 0
-  m_Name: Hamburger
+  m_Name: MeatUncooked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d0c1ebc3b95ba42ac269c07d957b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: a8bac985302699f48942233b2bb57487, type: 2}
+  kitchenObjectSO: {fileID: 0}
 --- !u!65 &7969449136227533829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1346fdd2a04e324c8dd58df1b1773af, type: 2}
+  - {fileID: 2100000, guid: f3ad1c06534c0dd438c462566278081f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

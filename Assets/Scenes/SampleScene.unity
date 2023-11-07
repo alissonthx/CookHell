@@ -2816,7 +2816,7 @@ PrefabInstance:
     - target: {fileID: 6477489084259784541, guid: 5191192c828ce714087dc1de09943e3d,
         type: 3}
       propertyPath: m_Name
-      value: KitchenCounter(Cook)
+      value: KitchenCounter(Stove)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5191192c828ce714087dc1de09943e3d, type: 3}
