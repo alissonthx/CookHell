@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28088
+  m_Name: pb_Mesh28096
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1611,7 +1611,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27992
+  m_Name: pb_Mesh27996
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2987,7 +2987,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28178
+  m_Name: pb_Mesh28180
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3587,7 +3587,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28058
+  m_Name: pb_Mesh28066
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4095,7 +4095,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28160
+  m_Name: pb_Mesh28162
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4372,7 +4372,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28102
+  m_Name: pb_Mesh28110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4537,28 +4537,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 122329386}
     m_Modifications:
-    - target: {fileID: 1573208595476518700, guid: 0e8035c3c714c2246a2aebf251b68318,
+    - target: {fileID: 3295420030406414125, guid: 0e8035c3c714c2246a2aebf251b68318,
         type: 3}
-      propertyPath: fryingRecipeSOArray.Array.size
+      propertyPath: m_UseCustomVertexStreams
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1573208595476518700, guid: 0e8035c3c714c2246a2aebf251b68318,
+    - target: {fileID: 3295420030406414125, guid: 0e8035c3c714c2246a2aebf251b68318,
         type: 3}
-      propertyPath: burningRecipeSOArray.Array.size
-      value: 1
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1573208595476518700, guid: 0e8035c3c714c2246a2aebf251b68318,
+    - target: {fileID: 3295420030406414125, guid: 0e8035c3c714c2246a2aebf251b68318,
         type: 3}
-      propertyPath: fryingRecipeSOArray.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: acd7bd20725728f48a28fa5390ec262c,
-        type: 2}
-    - target: {fileID: 1573208595476518700, guid: 0e8035c3c714c2246a2aebf251b68318,
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295420030406414125, guid: 0e8035c3c714c2246a2aebf251b68318,
         type: 3}
-      propertyPath: burningRecipeSOArray.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: beb1bbe172415e54389cca59bcb5e089,
-        type: 2}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5446257864684439976, guid: 0e8035c3c714c2246a2aebf251b68318,
         type: 3}
       propertyPath: m_Name
@@ -4619,6 +4617,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7515906667677682189, guid: 0e8035c3c714c2246a2aebf251b68318,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515906667677682189, guid: 0e8035c3c714c2246a2aebf251b68318,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515906667677682189, guid: 0e8035c3c714c2246a2aebf251b68318,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515906667677682189, guid: 0e8035c3c714c2246a2aebf251b68318,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8035c3c714c2246a2aebf251b68318, type: 3}
 --- !u!4 &2040563524 stripped
@@ -4659,7 +4677,7 @@ PrefabInstance:
     - target: {fileID: 6961577388222067180, guid: 55f4e04b8fb464d45b93e910f3df714c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.3
+      value: 6.7000003
       objectReference: {fileID: 0}
     - target: {fileID: 6961577388222067180, guid: 55f4e04b8fb464d45b93e910f3df714c,
         type: 3}

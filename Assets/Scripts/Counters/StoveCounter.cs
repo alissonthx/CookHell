@@ -33,7 +33,7 @@ public class StoveCounter : BaseCounter
                 case State.Idle:
                     break;
                 case State.Frying:
-                    fryingTimer += Time.deltaTime;                    
+                    fryingTimer += Time.deltaTime;
                     if (fryingTimer > fryingRecipeSO.fryingTimeMax)
                     {
                         // Fried
@@ -69,7 +69,7 @@ public class StoveCounter : BaseCounter
             Debug.Log(state);
         }
     }
-    
+
     public override void Interact(Player player)
     {
         if (!HasKitchenObject())
