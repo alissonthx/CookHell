@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a999ce45e7fdd444bc03f162bc9fdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCounter: {fileID: 4125810922979135043}
+  baseCounter: {fileID: 0}
   visualGameObject: {fileID: 6602565661295255109}
 --- !u!1 &397458405500073964
 GameObject:
@@ -412,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6189263577064124027}
   - component: {fileID: 6189263577064124020}
-  - component: {fileID: 4125810922979135043}
+  - component: {fileID: 2795656613739802877}
   m_Layer: 3
   m_Name: DishBox
   m_TagString: DishBox
@@ -449,9 +449,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.2, y: 4.65, z: 6.2}
+  m_Size: {x: 6, y: 4.6, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4125810922979135043
+--- !u!114 &2795656613739802877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,11 +460,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6189263577064124026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a86fa787738540468504d92717660b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 72df60cd03ffc7b439724d3fb15f594a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counterPoint: {fileID: 2642128452797069838}
-  kitchenObjectSO: {fileID: 11400000, guid: e8457453672a74f4da388f82a42370c2, type: 2}
 --- !u!1 &6602565661295255109
 GameObject:
   m_ObjectHideFlags: 0

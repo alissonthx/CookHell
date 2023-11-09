@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a999ce45e7fdd444bc03f162bc9fdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCounter: {fileID: 9005417868392101269}
+  baseCounter: {fileID: 4286565469384889257}
   visualGameObject: {fileID: 6042139307215416634}
 --- !u!1 &6042139307215416634
 GameObject:
@@ -282,6 +282,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6477489084259784538, guid: f869bdfa42dbe6445ae677694b9ab3a1,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477489084259784538, guid: f869bdfa42dbe6445ae677694b9ab3a1,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477489084259784538, guid: f869bdfa42dbe6445ae677694b9ab3a1,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6477489084259784541, guid: f869bdfa42dbe6445ae677694b9ab3a1,
         type: 3}
       propertyPath: m_Name
@@ -301,7 +316,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 753542198482795693}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9005417868392101269
+--- !u!114 &4286565469384889257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,11 +325,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6021792791763561456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a86fa787738540468504d92717660b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 72df60cd03ffc7b439724d3fb15f594a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   counterPoint: {fileID: 6021792791695812326}
-  kitchenObjectSO: {fileID: 11400000, guid: 4969528c2be96ea40bedd1c8f4b6e082, type: 2}
 --- !u!4 &6021792791763561460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6477489084259784537, guid: f869bdfa42dbe6445ae677694b9ab3a1,

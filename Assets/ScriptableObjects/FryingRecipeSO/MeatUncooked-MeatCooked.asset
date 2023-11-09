@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c1f51136e968744bfa3b1a41d1b666, type: 3}
+  m_Name: MeatUncooked-MeatCooked
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: b31d78ffa87624a43b6a32972cfadcc8, type: 2}
+  output: {fileID: 11400000, guid: f9d9df9f593c9bb46a8cdbfae10e56b6, type: 2}
+  fryingTimeMax: 3
