@@ -3,9 +3,9 @@
 <p align="center"> Overcooked inspired 3D game.</p>
 
 <img src="./Assets/img/CookHell.png">
-<img src="./Assets/Gifs/StoveCookHell1.gif">
-<img src="./Assets/Gifs/StoveCookHell2.gif">
-<img src="./Assets/Gifs/StoveCookHell3.gif">
+<img src="./Assets/Gifs/StoveCookhell1.gif">
+<img src="./Assets/Gifs/StoveCookhell2.gif">
+<img src="./Assets/Gifs/StoveCookhell3.gif">
 
 <h2>🚀 Technologies</h2>
 <ul>
