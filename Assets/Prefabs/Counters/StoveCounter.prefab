@@ -14804,6 +14804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: stove
       objectReference: {fileID: 0}
+    - target: {fileID: 4227241294716935724, guid: e5658cbe189ebee4cb9d8ea82599cf5c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c32a92f4d4fcad14f8c3d65e54706246, type: 2}
     - target: {fileID: 7339356831882890532, guid: e5658cbe189ebee4cb9d8ea82599cf5c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14988,6 +14993,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8405933985767298011, guid: e5658cbe189ebee4cb9d8ea82599cf5c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7532073f90c597e4db657b67263c4323, type: 2}
+    - target: {fileID: -8405933985767298011, guid: e5658cbe189ebee4cb9d8ea82599cf5c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7532073f90c597e4db657b67263c4323, type: 2}
     - target: {fileID: -7918335002988649766, guid: e5658cbe189ebee4cb9d8ea82599cf5c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15032,6 +15047,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4227241294716935724, guid: e5658cbe189ebee4cb9d8ea82599cf5c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7532073f90c597e4db657b67263c4323, type: 2}
     - target: {fileID: 7339356831882890532, guid: e5658cbe189ebee4cb9d8ea82599cf5c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15169,6 +15189,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2292682050741055788, guid: 8ecc732fe518067449d214f99d7a39d0,
         type: 3}
+      propertyPath: barImage
+      value: 
+      objectReference: {fileID: 9114293230841698986}
+    - target: {fileID: 2292682050741055788, guid: 8ecc732fe518067449d214f99d7a39d0,
+        type: 3}
       propertyPath: hasProgressGameObject
       value: 
       objectReference: {fileID: 5446257864684439976}
@@ -15289,6 +15314,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ecc732fe518067449d214f99d7a39d0, type: 3}
+--- !u!114 &9114293230841698986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 181288852173937835, guid: 8ecc732fe518067449d214f99d7a39d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 9005061972722566657}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9056757292210511941
 PrefabInstance:
   m_ObjectHideFlags: 0
