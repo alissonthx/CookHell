@@ -1,16 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoveCounter : BaseCounter
+public class StoveCounter : BaseCounter, IHasProgress
 {
-    private enum State
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
+    public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
+    public class OnStateChangedEventArgs : EventArgs
+    {
+        public State state;
+    }
+    public enum State
     {
         Idle,
         Frying,
         Fried,
         Burned,
     }
+
     [SerializeField] private FryingRecipeSO[] fryingRecipeSOArray;
     [SerializeField] private BurningRecipeSO[] burningRecipeSOArray;
     private State state;
@@ -34,7 +42,13 @@ public class StoveCounter : BaseCounter
                     break;
                 case State.Frying:
                     fryingTimer += Time.deltaTime;
-                    if (fryingTimer > fryingRecipeSO.fryingTimeMax)
+
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = fryingTimer / fryingRecipeSO.fryingTimerMax
+                    });
+
+                    if (fryingTimer > fryingRecipeSO.fryingTimerMax)
                     {
                         // Fried
                         fryingTimer = 0f;
@@ -42,16 +56,26 @@ public class StoveCounter : BaseCounter
 
                         KitchenObject.SpawnKitchenObject(fryingRecipeSO.output, this);
 
-                        Debug.Log("Object Fried!");
-
                         state = State.Fried;
                         burningTimer = 0f;
                         burningRecipeSO = GetBurningRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                            state = state
+                        });
                     }
+
                     break;
                 case State.Fried:
                     burningTimer += Time.deltaTime;
-                    if (burningTimer > burningRecipeSO.burningTimeMax)
+
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = burningTimer / burningRecipeSO.burningTimerMax
+                    });
+
+                    if (burningTimer > burningRecipeSO.burningTimerMax)
                     {
                         // Fried
                         burningTimer = 0f;
@@ -59,8 +83,17 @@ public class StoveCounter : BaseCounter
 
                         KitchenObject.SpawnKitchenObject(burningRecipeSO.output, this);
 
-                        Debug.Log("Object Burned!!!");
                         state = State.Burned;
+
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                            state = state
+                        });
+
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            progressNormalized = 0f
+                        });
                     }
                     break;
                 case State.Burned:
@@ -87,6 +120,12 @@ public class StoveCounter : BaseCounter
 
                     state = State.Frying;
                     fryingTimer = 0f;
+
+
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = fryingTimer / fryingRecipeSO.fryingTimerMax
+                    });
                 }
             }
             else
@@ -107,6 +146,11 @@ public class StoveCounter : BaseCounter
                 GetKitchenObject().SetKitchenObjectParent(player);
 
                 state = State.Idle;
+
+                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                {
+                    state = state
+                });
             }
         }
     }
