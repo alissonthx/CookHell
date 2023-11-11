@@ -14,6 +14,10 @@ public class PlateKitchenObject : KitchenObject
 
     public bool TryAddIngredient(KitchenObjectSO kitchenObjectSO)
     {
+        if(!validKitchenObjectSOList.Contains(kitchenObjectSO)){
+            // not a valid ingredient
+            return false;
+        }
         if (kitchenObjectSOList.Contains(kitchenObjectSO))
         {
             // already had this type
