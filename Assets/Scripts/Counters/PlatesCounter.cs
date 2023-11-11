@@ -15,13 +15,16 @@ public class PlatesCounter : BaseCounter
     private int platesSpawnedAmountMax = 4;
 
 
-    private void Update(){
+    private void Update()
+    {
         spawnPlateTimer += Time.deltaTime;
-        if(spawnPlateTimer > spawnPlateTimerMax){
+        if (spawnPlateTimer > spawnPlateTimerMax)
+        {
             spawnPlateTimer = 0f;
 
-            if(platesSpawnedAmount < platesSpawnedAmountMax){
-                platesSpawnedAmount ++;
+            if (platesSpawnedAmount < platesSpawnedAmountMax)
+            {
+                platesSpawnedAmount++;
 
                 OnPlateSpawned?.Invoke(this, EventArgs.Empty);
             }
@@ -30,15 +33,17 @@ public class PlatesCounter : BaseCounter
 
     public override void Interact(Player player)
     {
-        // if player don't have plate
-        if(!player.HasKitchenObject()){
-            if(platesSpawnedAmount > 0){
-            // there's at least one plate here
-             platesSpawnedAmount --;   
+        if (!player.HasKitchenObject())
+        {
+            // if player don't have plate
+            if (platesSpawnedAmount > 0)
+            {
+                // there's at least one plate here
+                platesSpawnedAmount--;
 
-             KitchenObject.SpawnKitchenObject(plateKitchenObjectSO, player);
+                KitchenObject.SpawnKitchenObject(plateKitchenObjectSO, player);
 
-             OnPlateRemoved?.Invoke(this, EventArgs.Empty);
+                OnPlateRemoved?.Invoke(this, EventArgs.Empty);
             }
         }
     }

@@ -176,7 +176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1678831336422135799}
   - component: {fileID: 8538987325120888769}
-  - component: {fileID: 7969449136227533829}
   m_Layer: 0
   m_Name: Bread
   m_TagString: Untagged
@@ -193,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 4462166424155884600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3007504916834250827}
@@ -213,17 +212,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d0c1ebc3b95ba42ac269c07d957b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: a8bac985302699f48942233b2bb57487, type: 2}
---- !u!65 &7969449136227533829
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4462166424155884600}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.77123314, y: 0.41807616, z: 0.77876055}
-  m_Center: {x: 0.005616039, y: 0.11534673, z: 0.0018786788}
+  kitchenObjectSO: {fileID: 11400000, guid: 3893261fadb3de040a0ac7a80369814b, type: 2}
