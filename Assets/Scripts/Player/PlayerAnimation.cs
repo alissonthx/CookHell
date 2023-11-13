@@ -50,7 +50,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    private void OnInteractAction_OnPlayerGrabObject(object sender, System.EventArgs e)
+    private void OnInteractAction_OnPlayerGrabObject(object sender, EventArgs e)
     {
         if (!player.HasKitchenObject())
         {
