@@ -84,13 +84,14 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+        Vector3 origin = new Vector3(transform.position.x, 1f, transform.position.z);
         if (moveDir != Vector3.zero)
         {
             lastInteractDir = moveDir;
         }
 
         float interactDistance = 4f;
-        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask))
+        if (Physics.Raycast(origin, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask))
         {
             if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
             {
