@@ -5316,26 +5316,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 855954302}
     m_Modifications:
-    - target: {fileID: 4489823265261263174, guid: 698fd3609c88589419b769cdc9c0c795,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489823265261263174, guid: 698fd3609c88589419b769cdc9c0c795,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489823265261263174, guid: 698fd3609c88589419b769cdc9c0c795,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4489823265261263174, guid: 698fd3609c88589419b769cdc9c0c795,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4489823265261263175, guid: 698fd3609c88589419b769cdc9c0c795,
         type: 3}
       propertyPath: knife
@@ -5346,11 +5326,6 @@ PrefabInstance:
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 1161029534}
-    - target: {fileID: 4489823265877306546, guid: 698fd3609c88589419b769cdc9c0c795,
-        type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4489823265877306548, guid: 698fd3609c88589419b769cdc9c0c795,
         type: 3}
       propertyPath: m_LocalPosition.x

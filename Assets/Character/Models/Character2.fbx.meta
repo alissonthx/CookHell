@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7578db1efe6d42b408020a0037e39508
+guid: 58830ceade7a4f14cb9ac106a79238e3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -68,6 +68,64 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: Armature.001|Cut
+      takeName: Armature.001|Cut
+      internalID: -7385165048426381610
+      firstFrame: 0
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature.001|Grab
+      takeName: Armature.001|Grab
+      internalID: -8215485893004058012
+      firstFrame: 0
+      lastFrame: 3
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: Armature.001|Idle
       takeName: Armature.001|Idle
       internalID: 4699274299699868179
@@ -102,6 +160,35 @@ ModelImporter:
       internalID: 3440592961148316909
       firstFrame: 0
       lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature.001|Release
+      takeName: Armature.001|Release
+      internalID: -8725680838117581290
+      firstFrame: 0
+      lastFrame: 3
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -324,16 +411,16 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Foot.L.001
-      humanName: LeftFoot
+    - boneName: Foot.R.001
+      humanName: RightFoot
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Foot.R.001
-      humanName: RightFoot
+    - boneName: Foot.L.001
+      humanName: LeftFoot
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -410,13 +497,13 @@ ModelImporter:
     - name: LowerArm.L
       parentName: UpperArm.L
       position: {x: -0.0000000015076301, y: 0.0032871505, z: -3.7252902e-11}
-      rotation: {x: 0.039241374, y: 0.0014470458, z: -0.012310132, w: 0.9991529}
-      scale: {x: 1.0000006, y: 1.0000004, z: 1}
+      rotation: {x: 0.039241176, y: 0.0014470336, z: -0.012310205, w: 0.9991529}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1}
     - name: Hand.L
       parentName: LowerArm.L
-      position: {x: -5.9604643e-10, y: 0.0029953627, z: -9.173106e-13}
-      rotation: {x: -0.046201844, y: 0.0010058625, z: 0.021743126, w: 0.998695}
-      scale: {x: 1.0000007, y: 1.0000007, z: 0.9999999}
+      position: {x: 5.960464e-10, y: 0.0029953634, z: -2.8777477e-11}
+      rotation: {x: -0.04620183, y: 0.0010058351, z: 0.021743128, w: 0.998695}
+      scale: {x: 1.0000005, y: 1.0000006, z: 0.99999994}
     - name: Hand.L_end
       parentName: Hand.L
       position: {x: -0, y: 0.0024487965, z: 0}
@@ -430,18 +517,18 @@ ModelImporter:
     - name: UpperArm.R
       parentName: Shoulder.R
       position: {x: 1.4901162e-10, y: 0.0043760906, z: -7.105427e-17}
-      rotation: {x: 0.0057134335, y: -0.012870562, z: -0.13487224, w: -0.99076295}
+      rotation: {x: 0.0057133734, y: -0.012870592, z: -0.13487208, w: -0.99076295}
       scale: {x: 1.0000005, y: 1, z: 0.99999994}
     - name: LowerArm.R
       parentName: UpperArm.R
-      position: {x: 6.1356054e-10, y: 0.0032871505, z: -5.5879353e-11}
-      rotation: {x: 0.0392414, y: -0.0014470563, z: 0.012310075, w: 0.99915296}
-      scale: {x: 1.0000006, y: 1.0000007, z: 1}
+      position: {x: -2.8153938e-10, y: 0.0032871498, z: 3.7252902e-11}
+      rotation: {x: 0.039241366, y: -0.0014471166, z: 0.012310472, w: 0.99915296}
+      scale: {x: 1.0000006, y: 1.0000007, z: 0.99999994}
     - name: Hand.R
       parentName: LowerArm.R
-      position: {x: -0.0000000011920929, y: 0.0029953625, z: -1.0389698e-11}
-      rotation: {x: -0.04620184, y: -0.0010058508, z: -0.02174326, w: 0.99869496}
-      scale: {x: 1.0000004, y: 1.0000007, z: 0.9999998}
+      position: {x: 0.0000000017881393, y: 0.0029953634, z: -1.4807782e-11}
+      rotation: {x: -0.046201836, y: -0.0010058352, z: -0.021743232, w: 0.99869496}
+      scale: {x: 1.0000007, y: 1.0000007, z: 0.99999994}
     - name: Hand.R_end
       parentName: Hand.R
       position: {x: -0, y: 0.0024487965, z: 0}
