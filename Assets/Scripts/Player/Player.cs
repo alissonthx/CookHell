@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     [Header("Stats")]
     private bool isWalking;
     [SerializeField]
-    private float moveSpeed = 28.0f;
+    private float moveSpeed = 22.0f;
     private KitchenObject kitchenObject;
     [SerializeField] private Transform kitchenObjectHoldPoint;
 
