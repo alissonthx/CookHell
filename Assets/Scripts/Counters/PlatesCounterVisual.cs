@@ -17,10 +17,6 @@ public class PlatesCounterVisual : MonoBehaviour
         platesCounter.OnPlateRemoved += PlatesCounter_OnPlateRemoved;
     }
 
-    private void Update(){
-        
-    }
-
     private void PlatesCounter_OnPlateRemoved(object sender, EventArgs e)
     {
         GameObject plateGameObject = plateVisualGameObjectList[plateVisualGameObjectList.Count - 1];
