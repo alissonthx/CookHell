@@ -1656,6 +1656,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 13fc156b7b185eb46b2b8196411e5b97, type: 2}
+    - target: {fileID: 1491717948345598490, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1602196234177695250, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
         type: 3}
       propertyPath: m_Camera
@@ -1677,6 +1682,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 60fecf6531f5f8441bbbe60c66c22379,
         type: 2}
+    - target: {fileID: 6008684519932363833, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008684519932363833, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008684519932363833, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133048294500805522, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133048294500805522, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 7133048294500805522, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 195
+      objectReference: {fileID: 0}
     - target: {fileID: 7452998337460775291, guid: de37dda4f4bf0c94b8ff5eacc8e2f741,
         type: 3}
       propertyPath: m_Name
@@ -2372,11 +2407,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 9005572181011489107, guid: 698fd3609c88589419b769cdc9c0c795,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ba822e7857890a642bdcb9710cf9a840, type: 2}
     - target: {fileID: 9039848774019941811, guid: 698fd3609c88589419b769cdc9c0c795,
         type: 3}
       propertyPath: debug
