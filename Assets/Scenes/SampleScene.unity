@@ -1543,6 +1543,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122329386}
     m_Modifications:
+    - target: {fileID: 6372252908425073245, guid: 361fb34c7332ed04daccce4d69feedb4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372252908425073245, guid: 361fb34c7332ed04daccce4d69feedb4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372252908425073245, guid: 361fb34c7332ed04daccce4d69feedb4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 8376667227265633696, guid: 361fb34c7332ed04daccce4d69feedb4,
         type: 3}
       propertyPath: m_Name
@@ -2415,7 +2430,22 @@ PrefabInstance:
     - target: {fileID: 4489823265427641685, guid: 698fd3609c88589419b769cdc9c0c795,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.52
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489823265877306548, guid: 698fd3609c88589419b769cdc9c0c795,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489823265877306548, guid: 698fd3609c88589419b769cdc9c0c795,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489823265877306548, guid: 698fd3609c88589419b769cdc9c0c795,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 4489823265877306548, guid: 698fd3609c88589419b769cdc9c0c795,
         type: 3}
@@ -2466,6 +2496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489823265877306548, guid: 698fd3609c88589419b769cdc9c0c795,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4489823265877306551, guid: 698fd3609c88589419b769cdc9c0c795,
         type: 3}
