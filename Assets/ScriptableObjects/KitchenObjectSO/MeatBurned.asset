@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MeatBurned
   m_EditorClassIdentifier: 
   prefab: {fileID: 1678831336422135799, guid: 8fbe9ed7ebb62194a803d184f9ad94b6, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 88e950cec06f27d41af3bb90a253a7e9, type: 3}
   objectName: Hamburger Burned
