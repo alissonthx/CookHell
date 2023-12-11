@@ -62,7 +62,7 @@ MonoBehaviour:
   - kitchenObjectSO: {fileID: 11400000, guid: a8bac985302699f48942233b2bb57487, type: 2}
     gameObject: {fileID: 1529548028486430672}
   - kitchenObjectSO: {fileID: 11400000, guid: da9ce4fe83ed12a46b5d8e2f7c80771e, type: 2}
-    gameObject: {fileID: 4462166424155884600, guid: 8fbe9ed7ebb62194a803d184f9ad94b6,
+    gameObject: {fileID: 4462166424155884600, guid: c221f56db03fdac4e8400b4b71a56688,
       type: 3}
 --- !u!1001 &430681569724515943
 PrefabInstance:
@@ -475,7 +475,7 @@ PrefabInstance:
     - target: {fileID: 1678831336422135799, guid: 6ff404ec222dedd4faba03f058815ae6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9000001
+      value: 2.1000001
       objectReference: {fileID: 0}
     - target: {fileID: 1678831336422135799, guid: 6ff404ec222dedd4faba03f058815ae6,
         type: 3}
