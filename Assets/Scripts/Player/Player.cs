@@ -11,13 +11,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public Action<object, EventArgs> OnPlayerGrabObject { get; internal set; }
 
     [SerializeField]
-    private GameInput gameInput;
-
-    [Header("Debug")]
-    [Space]
-    [SerializeField]
-    private GameObject debug;
-
+    private GameInput gameInput;    
     [Space]
     [Header("Stats")]
     private bool isWalking;
