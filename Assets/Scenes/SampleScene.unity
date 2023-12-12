@@ -944,6 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 693914453}
+  - component: {fileID: 693914454}
   m_Layer: 0
   m_Name: DeliveryManager
   m_TagString: Untagged
@@ -966,6 +967,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 855954302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &693914454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693914452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e110b1837d57c44b0269da9b09f9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeListSO: {fileID: 11400000, guid: ef6f0b0521152554aa6e3cd1d22e80a1, type: 2}
 --- !u!4 &768777015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6021792791763561460, guid: ac399e86288b22944a7ce819b3bd925b,
