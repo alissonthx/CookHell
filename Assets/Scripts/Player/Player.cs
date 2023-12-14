@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public Action<object, EventArgs> OnPlayerGrabObject { get; internal set; }
 
     [SerializeField]
-    private GameInput gameInput;    
+    private GameInput gameInput;
     [Space]
     [Header("Stats")]
     private bool isWalking;
@@ -53,6 +53,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
     {
+        if (!KitchenGameManager.Instance.IsGamePlaying()) return;
+        
         if (selectedCounter != null)
         {
             selectedCounter.InteractAlternate(this);
@@ -175,7 +177,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         this.kitchenObject = kitchenObject;
 
-        if(kitchenObject != null){
+        if (kitchenObject != null)
+        {
             OnPickedSomething?.Invoke(this, EventArgs.Empty);
         }
     }
