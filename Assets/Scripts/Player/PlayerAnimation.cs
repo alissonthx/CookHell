@@ -17,6 +17,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        player = GetComponentInParent<Player>();
     }
 
     private void Start()
