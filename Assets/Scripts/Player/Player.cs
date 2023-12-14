@@ -51,25 +51,29 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
     }
 
-    private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
-    {
-        if (!KitchenGameManager.Instance.IsGamePlaying()) return;
-        
-        if (selectedCounter != null)
-        {
-            selectedCounter.InteractAlternate(this);
-        }
-    }
-
     private void Update()
     {
         HandleMovement();
         HandleInteractions();
     }
 
+    private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
+    {
+        // disable interaction if the game is not in state playing
+        if (!KitchenGameManager.Instance.IsGamePlaying()) return;
+
+        if (selectedCounter != null)
+        {
+            selectedCounter.InteractAlternate(this);
+        }
+    }
+
     // game input keys interact with counter blocks
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
+        // disable interaction if the game is not in state playing
+        if (!KitchenGameManager.Instance.IsGamePlaying()) return;
+
         if (selectedCounter != null)
         {
             selectedCounter.Interact(this);
