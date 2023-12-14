@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    private Player player;
     private Animator anim;
-    [SerializeField] private GameObject knife;
-    [SerializeField] private Player player;
+    [SerializeField] private GameObject knife;    
     [SerializeField] private GameInput gameInput;
     private string GRAB = "Grab";
     private string RELEASE = "Release";
@@ -26,7 +26,7 @@ public class PlayerAnimation : MonoBehaviour
     }
 
     private void OnInteractAlternateAction_OnCut(object sender, EventArgs e)
-    {  
+    {
         anim.SetTrigger(CUT);
         StartCoroutine(KnifeShow(2.5f));
     }
@@ -40,7 +40,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        if (player.IsWalking())
         {
             anim.SetBool(IS_WALKING, true);
         }
