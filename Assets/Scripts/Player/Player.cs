@@ -8,6 +8,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 {
     #region Variables
     public static Player Instance { get; private set; }
+    public event EventHandler OnPickedSomething;
     public Action<object, EventArgs> OnPlayerGrabObject { get; internal set; }
 
     [SerializeField]
@@ -173,6 +174,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
+
+        if(kitchenObject != null){
+            OnPickedSomething?.Invoke(this, EventArgs.Empty);
+        }
     }
     public KitchenObject GetKitchenObject()
     {
