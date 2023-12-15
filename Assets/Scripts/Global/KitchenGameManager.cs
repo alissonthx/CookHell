@@ -19,7 +19,7 @@ public class KitchenGameManager : MonoBehaviour
     private float waitingToStartTimer = 1f;
     private float countdownToStartTimer = 3f;
     private float gamePlayingTimer;
-    private float gamePlayingTimerMax = 15f;
+    private float gamePlayingTimerMax = 180f;
 
     private void Awake()
     {
@@ -81,7 +81,11 @@ public class KitchenGameManager : MonoBehaviour
         return countdownToStartTimer;
     }
 
-    public float GameTimerNormalize()
+    public float GetGamePlayingTimer(){
+        return gamePlayingTimerMax;
+    }
+
+    public float GamePlayingTimerNormalize()
     {
         return gamePlayingTimer / gamePlayingTimerMax;
     }
