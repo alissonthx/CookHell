@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 78effd641e3a0044182d2b77d4150725
+guid: 9c5bddd9e4eefc045b99db9394564767
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -203,6 +203,14 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Foot.L.001
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     - boneName: Foot.R.001_end
       humanName: RightFoot
       limit:
@@ -212,7 +220,7 @@ ModelImporter:
         length: 0
         modified: 0
     - boneName: Foot.L.001_end
-      humanName: LeftFoot
+      humanName: LeftToes
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -236,18 +244,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Character2Male(Clone)
+    - name: Character2Male 1(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Body
-      parentName: Character2Male(Clone)
+      parentName: Character2Male 1(Clone)
       position: {x: -0.000000029802322, y: 0.010069512, z: 1.7763568e-15}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 14.541901, y: 14.541901, z: 14.541901}
     - name: Armature.001
-      parentName: Character2Male(Clone)
+      parentName: Character2Male 1(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}

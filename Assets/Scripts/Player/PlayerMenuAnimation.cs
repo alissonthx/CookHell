@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMenuAnimation : MonoBehaviour
 {
-    private float timeToChangeAnimationMax = 20f;
+    private float timeToChangeAnimationMax = 16f;
     private float timeToChangeAnimation;
     private Animator anim;
     private string IDLE_VARIANT = "idleVariant";
