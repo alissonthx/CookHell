@@ -27,6 +27,16 @@ public class KitchenGameManager : MonoBehaviour
         state = State.WaitingToStart;
     }
 
+    private void Start(){
+        GameInput.Instance.OnPauseAction += GameInputOnPauseAction;
+    }
+
+    private void GameInputOnPauseAction(object sender, EventArgs e)
+    {
+        // Action to pause menu with controller and keyboard
+        PauseGame();
+    }
+
     private void Update()
     {
         switch (state)
@@ -88,5 +98,11 @@ public class KitchenGameManager : MonoBehaviour
     public float GamePlayingTimerNormalize()
     {
         return gamePlayingTimer / gamePlayingTimerMax;
+    }
+
+    
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
     }
 }
