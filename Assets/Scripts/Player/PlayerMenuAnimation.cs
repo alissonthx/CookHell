@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMenuAnimation : MonoBehaviour
 {
-    private float timeToChangeAnimationMax = 16f;
+    [SerializeField] private float timeToChangeAnimationMax = 16f;
     private float timeToChangeAnimation;
     private Animator anim;
     private string IDLE_VARIANT = "idleVariant";
@@ -21,7 +21,7 @@ public class PlayerMenuAnimation : MonoBehaviour
         {
             timeToChangeAnimation = timeToChangeAnimationMax;
             // change animation to idle variant
-            anim.SetTrigger(IDLE_VARIANT);            
+            anim.SetTrigger(IDLE_VARIANT);
         }
 
         if (timeToChangeAnimation > 0)
