@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamePlayingClockUI : MonoBehaviour
 {
     [SerializeField] private Image timerImage;
     [SerializeField] private TextMeshProUGUI textTimer;
 
-    
+    private void Update(){
+        timerImage.fillAmount = KitchenGameManager.Instance.GameTimerNormalize();
+    }
+
 }
