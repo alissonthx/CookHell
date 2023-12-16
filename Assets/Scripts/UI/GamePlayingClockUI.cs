@@ -10,30 +10,21 @@ public class GamePlayingClockUI : MonoBehaviour
     [SerializeField] private Image timerImage;
     [SerializeField] private TextMeshProUGUI textTimer;
 
-    // private void Start()
-    // {
-    //     KitchenGameManager.Instance.OnStateChanged += KitchenGameManager_OnStateChanged;
-    // }
-
     private void Update()
     {
         timerImage.fillAmount = KitchenGameManager.Instance.GamePlayingTimerNormalize();
 
-        textTimer.text = KitchenGameManager.Instance.GetGamePlayingTimer().ToString();
+        updateTimer(KitchenGameManager.Instance.GetGamePlayingTimer());
+        print(KitchenGameManager.Instance.GetGamePlayingTimer());
     }
 
-    // private float FormatTimer(float timer){
+    private void updateTimer(float currentTime)
+    {
+        currentTime += 1;
 
-    // }  
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
 
-    // private void KitchenGameManager_OnStateChanged(object sender, EventArgs e)
-    // {
-    //     if (KitchenGameManager.Instance.IsCountdownToStartActive())
-    //     {
-
-    //     }
-    //     else
-    //     {
-    //     }
-    // }
+        textTimer.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+    }
 }
