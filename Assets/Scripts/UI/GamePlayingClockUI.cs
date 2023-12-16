@@ -15,7 +15,6 @@ public class GamePlayingClockUI : MonoBehaviour
         timerImage.fillAmount = KitchenGameManager.Instance.GamePlayingTimerNormalize();
 
         updateTimer(KitchenGameManager.Instance.GetGamePlayingTimer());
-        print(KitchenGameManager.Instance.GetGamePlayingTimer());
     }
 
     private void updateTimer(float currentTime)
