@@ -15,6 +15,7 @@ public class OptionsGameUI : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private TextMeshProUGUI soundEffectsText;
     [SerializeField] private TextMeshProUGUI musicText;
+    private Action onCloseButtonAction;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class OptionsGameUI : MonoBehaviour
         closeButton.onClick.AddListener(() =>
         {
             Hide();
+            onCloseButtonAction();
         });
 
     }
@@ -43,7 +45,7 @@ public class OptionsGameUI : MonoBehaviour
         KitchenGameManager.Instance.OnGameUnPaused += KitchenGameManager_OnGameUnpaused;
 
         UpdateVisual();
-        
+
         Hide();
     }
 
@@ -58,9 +60,13 @@ public class OptionsGameUI : MonoBehaviour
         musicText.text = "Music: " + Math.Round(MusicManager.Instance.GetVolume() * 10f);
     }
 
-    public void Show()
+    public void Show(Action onCloseButtonAction)
     {
+        this.onCloseButtonAction = onCloseButtonAction;
+
         gameObject.SetActive(true);
+
+        soundEffectsButton.Select();
     }
     public void Hide()
     {
