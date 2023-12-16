@@ -1,29 +1,46 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
-    #region Variables
+    public static GameInput Instance { get; private set; }
+
     private InputActions playerControlls;
 
-    [Header("Player Stats")]
-    private Vector3 movement = Vector3.zero;
-    public Vector3 _movement => this.movement;
 
-    #endregion
+    public event EventHandler OnBindingRebind;
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractAlternateAction;
+    public event EventHandler OnPauseAction;
 
     private void Awake()
     {
+        Instance = this;
+
         playerControlls = new InputActions();
         OnEnable();
 
         playerControlls.Player.Interact.performed += Interact_performed;
         playerControlls.Player.InteractAlternate.performed += InteractAlternate_performed;
+        playerControlls.Player.Pause.performed += Pause_performed;
+    }
+
+    private void OnDestroy()
+    {
+        playerControlls.Player.Interact.performed -= Interact_performed;
+        playerControlls.Player.InteractAlternate.performed -= InteractAlternate_performed;
+        playerControlls.Player.Pause.performed -= Pause_performed;
+
+        playerControlls.Dispose();
+    }
+
+    private void Pause_performed(InputAction.CallbackContext context)
+    {
+        OnPauseAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void InteractAlternate_performed(InputAction.CallbackContext context)
@@ -52,4 +69,8 @@ public class GameInput : MonoBehaviour
     {
         playerControlls.Player.Disable();
     }
+
+
+    // Perform Interactive Rebinding
+    // OnBindingRebind?.Invoke(This, EventArgs.Empty);
 }
