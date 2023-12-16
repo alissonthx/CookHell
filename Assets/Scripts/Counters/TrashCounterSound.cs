@@ -1,18 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TrashCounterSound : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioSource audioSource;
+
+    private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        TrashCounter.OnAnyObjectTrashed += TrashCounter_OnAnyObjectTrashed;
+    }
+
+    private void TrashCounter_OnAnyObjectTrashed(object sender, EventArgs e)
+    {
+        audioSource.Play();
     }
 }

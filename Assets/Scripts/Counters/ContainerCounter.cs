@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class ContainerCounter : BaseCounter
 {
-    public event EventHandler OnPlayerGrabObject;
+    new public static void ResetStaticData()
+    {
+        OnPlayerGrabObject = null;
+    }
+
+    public static event EventHandler OnPlayerGrabObject;
+
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
     // interact to instantiate food in blocks, need to change the object parent to player parent

@@ -50,6 +50,7 @@ public class StoveCounterSound : MonoBehaviour
         if (playSound)
         {
             audioSource.Play();
+            print("sizzle sound");
         }
         else
         {

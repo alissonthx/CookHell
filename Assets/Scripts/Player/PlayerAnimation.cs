@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
     private Player player;
     private Animator anim;
-    [SerializeField] private GameObject knife;    
+    [SerializeField] private GameObject knife;
     [SerializeField] private GameInput gameInput;
+
     private string GRAB = "Grab";
     private string RELEASE = "Release";
     private string IS_WALKING = "isWalking";
@@ -22,21 +24,29 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Start()
     {
-        gameInput.OnInteractAction += OnInteractAction_OnPlayerGrabObject;
-        gameInput.OnInteractAlternateAction += OnInteractAlternateAction_OnCut;
+        CuttingCounter.OnAnyCut += CuttingCounter_OnAnyCut;
+        ContainerCounter.OnPlayerGrabObject += ContainerCounter_OnPlayerGrabObject;
     }
 
-    private void OnInteractAlternateAction_OnCut(object sender, EventArgs e)
+    private void ContainerCounter_OnPlayerGrabObject(object sender, EventArgs e)
     {
-        anim.SetTrigger(CUT);
-        StartCoroutine(KnifeShow(2.5f));
+        if (!player.HasKitchenObject())
+        {
+            anim.SetTrigger(GRAB);
+        }
+        else
+        {
+            anim.SetTrigger(RELEASE);
+        }
     }
 
-    private IEnumerator KnifeShow(float time)
+    private void CuttingCounter_OnAnyCut(object sender, EventArgs e)
     {
-        knife.SetActive(true);
-        yield return new WaitForSeconds(time);
-        knife.SetActive(false);
+        if (!player.HasKitchenObject())
+        {
+            anim.SetTrigger(CUT);
+            StartCoroutine(KnifeShow(2.5f));
+        }
     }
 
     private void Update()
@@ -51,15 +61,10 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    private void OnInteractAction_OnPlayerGrabObject(object sender, EventArgs e)
+    private IEnumerator KnifeShow(float time)
     {
-        if (!player.HasKitchenObject())
-        {
-            anim.SetTrigger(GRAB);
-        }
-        else
-        {
-            anim.SetTrigger(RELEASE);
-        }
+        knife.SetActive(true);
+        yield return new WaitForSeconds(time);
+        knife.SetActive(false);
     }
 }
