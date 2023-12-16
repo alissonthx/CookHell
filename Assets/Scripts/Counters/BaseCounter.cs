@@ -6,21 +6,30 @@ using UnityEngine;
 
 public class BaseCounter : MonoBehaviour, IKitchenObjectParent
 {
+    public static void ResetStaticData()
+    {
+        OnAnyObjectPlacedHere = null;
+    }
+
     public static event EventHandler OnAnyObjectPlacedHere;
+
     [SerializeField] private Transform counterPoint;
     private KitchenObject kitchenObject;
 
-    public virtual void Interact(Player player){
+    public virtual void Interact(Player player)
+    {
         Debug.LogError("BaseCounter.Interact();");
     }
-    public virtual void InteractAlternate(Player player){
+    public virtual void InteractAlternate(Player player)
+    {
         // Debug.LogError("BaseCounter.InteractAlternate();");
     }
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
 
-        if(kitchenObject !=null){
+        if (kitchenObject != null)
+        {
             OnAnyObjectPlacedHere?.Invoke(this, EventArgs.Empty);
         }
     }

@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class TrashCounter : BaseCounter
 {
+    new public static void ResetStaticData()
+    {
+        OnAnyObjectTrashed = null;
+    }
+
     public static event EventHandler OnAnyObjectTrashed;
     public override void Interact(Player player)
     {
