@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class KitchenGameManager : MonoBehaviour
 {
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnPaused;
     public event EventHandler OnStateChanged;
 
     public static KitchenGameManager Instance { get; private set; }
@@ -20,6 +22,7 @@ public class KitchenGameManager : MonoBehaviour
     private float countdownToStartTimer = 3f;
     private float gamePlayingTimer;
     private float gamePlayingTimerMax = 180f;
+    private bool isGamePaused;
 
     private void Awake()
     {
@@ -27,14 +30,15 @@ public class KitchenGameManager : MonoBehaviour
         state = State.WaitingToStart;
     }
 
-    private void Start(){
+    private void Start()
+    {
         GameInput.Instance.OnPauseAction += GameInputOnPauseAction;
     }
 
     private void GameInputOnPauseAction(object sender, EventArgs e)
     {
         // Action to pause menu with controller and keyboard
-        PauseGame();
+        TogglePauseGame();
     }
 
     private void Update()
@@ -91,7 +95,8 @@ public class KitchenGameManager : MonoBehaviour
         return countdownToStartTimer;
     }
 
-    public float GetGamePlayingTimer(){
+    public float GetGamePlayingTimer()
+    {
         return gamePlayingTimerMax;
     }
 
@@ -100,9 +105,19 @@ public class KitchenGameManager : MonoBehaviour
         return gamePlayingTimer / gamePlayingTimerMax;
     }
 
-    
-    private void PauseGame()
+
+    public void TogglePauseGame()
     {
-        Time.timeScale = 0f;
+        isGamePaused = !isGamePaused;
+        if (isGamePaused)
+        {
+            Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            OnGameUnPaused?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
