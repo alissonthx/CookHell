@@ -11,6 +11,8 @@ public class GameInput : MonoBehaviour
 
     private InputActions playerControlls;
 
+
+    public event EventHandler OnBindingRebind;
     public event EventHandler OnInteractAction;
     public event EventHandler OnInteractAlternateAction;
     public event EventHandler OnPauseAction;
@@ -67,4 +69,8 @@ public class GameInput : MonoBehaviour
     {
         playerControlls.Player.Disable();
     }
+
+
+    // Perform Interactive Rebinding
+    // OnBindingRebind?.Invoke(This, EventArgs.Empty);
 }
