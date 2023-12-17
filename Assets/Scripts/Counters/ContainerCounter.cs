@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class ContainerCounter : BaseCounter
 {
+    new public static void ResetStaticData()
+    {
+        OnAnyGrab = null;
+    }
+
+    public static event EventHandler OnAnyGrab;
     public event EventHandler OnPlayerGrabObject;
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
@@ -18,6 +24,8 @@ public class ContainerCounter : BaseCounter
                 KitchenObject.SpawnKitchenObject(kitchenObjectSO, player);
 
                 OnPlayerGrabObject?.Invoke(this, EventArgs.Empty);
+                
+                OnAnyGrab?.Invoke(this, EventArgs.Empty);
             }
         }
     }

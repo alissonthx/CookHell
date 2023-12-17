@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class DeliveryCounter : BaseCounter
 {
-    public static DeliveryCounter Instance{get; private set;}
+    new public static void ResetStaticData()
+    {
+        OnAnyObjectDelivered = null;
+    }
 
+    public static DeliveryCounter Instance { get; private set; }
 
-    private void Awake(){
+    public static event EventHandler OnAnyObjectDelivered;
+
+    private void Awake()
+    {
         Instance = this;
     }
 
@@ -23,6 +30,7 @@ public class DeliveryCounter : BaseCounter
                 player.GetKitchenObject().DestroySelf();
 
                 DeliveryManager.Instance.DeliveryRecipe(plateKitchenObject);
+                OnAnyObjectDelivered?.Invoke(this, EventArgs.Empty);
             }
         }
     }

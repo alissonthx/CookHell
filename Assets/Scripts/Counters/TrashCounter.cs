@@ -13,9 +13,12 @@ public class TrashCounter : BaseCounter
     public static event EventHandler OnAnyObjectTrashed;
     public override void Interact(Player player)
     {
+        // Object trashed if player is hold something
         if (player.HasKitchenObject())
         {
             player.GetKitchenObject().DestroySelf();
+
+            OnAnyObjectTrashed?.Invoke(this, EventArgs.Empty);
         }
     }
 }

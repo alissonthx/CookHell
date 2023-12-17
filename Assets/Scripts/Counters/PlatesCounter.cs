@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class PlatesCounter : BaseCounter
 {
+    new public static void ResetStaticData()
+    {
+        OnAnyGrab = null;
+    }
+
+    public static event EventHandler OnAnyGrab;
     public event EventHandler OnPlateSpawned;
     public event EventHandler OnPlateRemoved;
 
@@ -44,6 +50,8 @@ public class PlatesCounter : BaseCounter
                 KitchenObject.SpawnKitchenObject(plateKitchenObjectSO, player);
 
                 OnPlateRemoved?.Invoke(this, EventArgs.Empty);
+                
+                OnAnyGrab?.Invoke(this, EventArgs.Empty);
             }
         }
     }

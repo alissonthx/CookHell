@@ -5,12 +5,12 @@ using UnityEngine;
 public class CounterAnimation : MonoBehaviour
 {
     private const string OPEN_CLOSE = "OpenClose";
-    private UnityEngine.Animator anim;
+    private Animator anim;
     [SerializeField] private ContainerCounter countainerCounter;
 
     private void Awake()
     {
-        anim = GetComponent<UnityEngine.Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()

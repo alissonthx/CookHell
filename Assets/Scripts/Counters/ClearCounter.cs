@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ClearCounter : BaseCounter
 {
+    public static event EventHandler OnAnyGrab;
+
+
     // interact to instantiate food in blocks, need to change the object parent to player parent
     public override void Interact(Player player)
     {
@@ -54,6 +57,7 @@ public class ClearCounter : BaseCounter
             {
                 // player is not carrying anything
                 GetKitchenObject().SetKitchenObjectParent(player);
+                OnAnyGrab?.Invoke(this, EventArgs.Empty);
             }
         }
     }
