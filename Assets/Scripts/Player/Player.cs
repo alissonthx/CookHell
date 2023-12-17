@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IKitchenObjectParent
 {
-    #region Variables
     public static Player Instance { get; private set; }
     public event EventHandler OnPickedSomething;
-    public Action<object, EventArgs> OnPlayerGrabObject { get; internal set; }
+
+    // public Action<object, EventArgs> OnPlayerGrabObject { get; internal set; }
 
     [SerializeField]
     private GameInput gameInput;
@@ -26,14 +26,13 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private Vector3 lastInteractDir;
     private BaseCounter selectedCounter;
 
+
     [HideInInspector]
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
         public BaseCounter selectedCounter;
     }
-
-    #endregion
 
 
     private void Awake()

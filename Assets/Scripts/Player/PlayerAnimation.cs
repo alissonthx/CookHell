@@ -6,10 +6,8 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Player player;
     private Animator anim;
     [SerializeField] private GameObject knife;
-    [SerializeField] private GameInput gameInput;
 
     private string GRAB = "Grab";
     private string RELEASE = "Release";
@@ -19,45 +17,44 @@ public class PlayerAnimation : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        player = GetComponentInParent<Player>();
     }
 
     private void Start()
     {
-        CuttingCounter.OnAnyCut += CuttingCounter_OnAnyCut;
-        ContainerCounter.OnPlayerGrabObject += ContainerCounter_OnPlayerGrabObject;
+        Player.Instance.OnPickedSomething += Player_OnPickedSomething;
+        BaseCounter.OnAnyObjectPlacedHere += BaseCounter_OnAnyObjectPlacedHere;
+
     }
 
-    private void ContainerCounter_OnPlayerGrabObject(object sender, EventArgs e)
+    private void Player_OnPickedSomething(object sender, EventArgs e)
     {
-        if (!player.HasKitchenObject())
-        {
-            anim.SetTrigger(GRAB);
-        }
-        else
-        {
-            anim.SetTrigger(RELEASE);
-        }
-    }
-
-    private void CuttingCounter_OnAnyCut(object sender, EventArgs e)
-    {
-        if (!player.HasKitchenObject())
-        {
-            anim.SetTrigger(CUT);
-            StartCoroutine(KnifeShow(2.5f));
-        }
+        anim.SetTrigger(GRAB);
     }
 
     private void Update()
     {
-        if (player.IsWalking())
+        if (Player.Instance.IsWalking())
         {
             anim.SetBool(IS_WALKING, true);
         }
         else
         {
             anim.SetBool(IS_WALKING, false);
+        }
+    }
+
+    private void BaseCounter_OnAnyObjectPlacedHere(object sender, EventArgs e)
+    {
+        anim.SetTrigger(RELEASE);
+    }
+
+
+    private void CuttingCounter_OnAnyCut(object sender, EventArgs e)
+    {
+        if (!Player.Instance.HasKitchenObject())
+        {
+            anim.SetTrigger(CUT);
+            StartCoroutine(KnifeShow(2.5f));
         }
     }
 

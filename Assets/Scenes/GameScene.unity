@@ -3922,7 +3922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a34c8087c9e24f64885568b1965e54da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4069,7 +4069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39607844}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6103,7 +6103,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 116bff4a36cb8ca4880543fa1ed6624c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8736,6 +8736,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 855954302}
     m_Modifications:
+    - target: {fileID: 3874085933234117373, guid: 698fd3609c88589419b769cdc9c0c795,
+        type: 3}
+      propertyPath: footstepTimerMax
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4489823265261263175, guid: 698fd3609c88589419b769cdc9c0c795,
         type: 3}
       propertyPath: gameInput

@@ -6,7 +6,7 @@ public class PlayerSounds : MonoBehaviour
 {
     private Player player;
     private float footstepTimer;
-    private float footstepTimerMax;
+    [SerializeField] private float footstepTimerMax;
 
     private void Awake()
     {

@@ -7,11 +7,11 @@ public class ContainerCounter : BaseCounter
 {
     new public static void ResetStaticData()
     {
-        OnPlayerGrabObject = null;
+        OnAnyGrab = null;
     }
 
-    public static event EventHandler OnPlayerGrabObject;
-
+    public static event EventHandler OnAnyGrab;
+    public event EventHandler OnPlayerGrabObject;
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
     // interact to instantiate food in blocks, need to change the object parent to player parent
@@ -24,6 +24,8 @@ public class ContainerCounter : BaseCounter
                 KitchenObject.SpawnKitchenObject(kitchenObjectSO, player);
 
                 OnPlayerGrabObject?.Invoke(this, EventArgs.Empty);
+                
+                OnAnyGrab?.Invoke(this, EventArgs.Empty);
             }
         }
     }

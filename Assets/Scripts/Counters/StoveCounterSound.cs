@@ -24,7 +24,7 @@ public class StoveCounterSound : MonoBehaviour
 
     private void StoveCounter_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e)
     {
-        float burnShowProgressAmount = .5f;
+        float burnShowProgressAmount = 0.5f;
         playWarningSound = stoveCounter.IsFried() && e.progressNormalized >= burnShowProgressAmount;
     }
 
@@ -50,7 +50,6 @@ public class StoveCounterSound : MonoBehaviour
         if (playSound)
         {
             audioSource.Play();
-            print("sizzle sound");
         }
         else
         {
