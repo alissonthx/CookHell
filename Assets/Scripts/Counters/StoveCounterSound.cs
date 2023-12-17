@@ -16,12 +16,6 @@ public class StoveCounterSound : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        stoveCounter.OnStateChanged += StoveCounter_OnStateChanged;
-        stoveCounter.OnProgressChanged += StoveCounter_OnProgressChanged;
-    }
-
     private void StoveCounter_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e)
     {
         float burnShowProgressAmount = 0.5f;
@@ -45,6 +39,7 @@ public class StoveCounterSound : MonoBehaviour
 
     private void StoveCounter_OnStateChanged(object sender, StoveCounter.OnStateChangedEventArgs e)
     {
+        // Debug.Log("State:" + e.state);
         bool playSound = e.state == StoveCounter.State.Frying || e.state == StoveCounter.State.Fried;
 
         if (playSound)
@@ -55,5 +50,17 @@ public class StoveCounterSound : MonoBehaviour
         {
             audioSource.Pause();
         }
+    }
+
+    private void OnEnable()
+    {
+        stoveCounter.OnStateChanged += StoveCounter_OnStateChanged;
+        stoveCounter.OnProgressChanged += StoveCounter_OnProgressChanged;
+    }
+    
+    private void OnDisable()
+    {
+        stoveCounter.OnStateChanged -= StoveCounter_OnStateChanged;
+        stoveCounter.OnProgressChanged -= StoveCounter_OnProgressChanged;
     }
 }

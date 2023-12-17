@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -17,13 +17,6 @@ public class PlayerAnimation : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        Player.Instance.OnPickedSomething += Player_OnPickedSomething;
-        BaseCounter.OnAnyObjectPlacedHere += BaseCounter_OnAnyObjectPlacedHere;
-
     }
 
     private void Player_OnPickedSomething(object sender, EventArgs e)
@@ -48,6 +41,11 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetTrigger(RELEASE);
     }
 
+    private void DeliveryCounter_OnAnyObjectDelivered(object sender, EventArgs e)
+    {
+        anim.SetTrigger(RELEASE);
+    }
+
 
     private void CuttingCounter_OnAnyCut(object sender, EventArgs e)
     {
@@ -63,5 +61,18 @@ public class PlayerAnimation : MonoBehaviour
         knife.SetActive(true);
         yield return new WaitForSeconds(time);
         knife.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        Player.Instance.OnPickedSomething += Player_OnPickedSomething;
+        BaseCounter.OnAnyObjectPlacedHere += BaseCounter_OnAnyObjectPlacedHere;
+        DeliveryCounter.Instance.OnAnyObjectDelivered += DeliveryCounter_OnAnyObjectDelivered;
+    }
+    private void OnDisable()
+    {
+        Player.Instance.OnPickedSomething -= Player_OnPickedSomething;
+        BaseCounter.OnAnyObjectPlacedHere -= BaseCounter_OnAnyObjectPlacedHere;
+        DeliveryCounter.Instance.OnAnyObjectDelivered -= DeliveryCounter_OnAnyObjectDelivered;
     }
 }

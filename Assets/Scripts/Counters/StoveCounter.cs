@@ -66,11 +66,12 @@ public class StoveCounter : BaseCounter, IHasProgress
                         state = State.Fried;
                         burningTimer = 0f;
                         burningRecipeSO = GetBurningRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
+
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                            state = state
+                        });
                     }
-                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
-                    {
-                        state = state
-                    });
 
                     break;
                 case State.Fried:
@@ -126,12 +127,19 @@ public class StoveCounter : BaseCounter, IHasProgress
                     // Actual State Frying here
 
                     state = State.Frying;
+                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                    {
+                        state = state
+                    });
+
                     fryingTimer = 0f;
 
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
                         progressNormalized = fryingTimer / fryingRecipeSO.fryingTimerMax
                     });
+
+
                 }
             }
             else
@@ -178,7 +186,6 @@ public class StoveCounter : BaseCounter, IHasProgress
                     state = state
                 });
 
-                print("actual state idle?" + state);
                 OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                 {
                     progressNormalized = 0f

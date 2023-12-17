@@ -61,15 +61,15 @@ public class SoundManager : MonoBehaviour
         PlaySound(audioClipRefsSO.deliverySuccess, deliveryCounter.transform.position);
     }
 
-    private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1f)
-    {
-        AudioSource.PlayClipAtPoint(audioClipArray[UnityEngine.Random.Range(0, audioClipArray.Length)], position, volume);
-    }
-
     public void PlaySoundFootstepsSound(Vector3 position, float volume)
     {
         Player player = Player.Instance;
         PlaySound(audioClipRefsSO.footstep, player.transform.position, volume);
+    }
+
+    private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1f)
+    {
+        AudioSource.PlayClipAtPoint(audioClipArray[UnityEngine.Random.Range(0, audioClipArray.Length)], position, volume);
     }
 
     private void PlaySound(AudioClip audioClip, Vector3 position, float volumeMultiplier = 1f)
