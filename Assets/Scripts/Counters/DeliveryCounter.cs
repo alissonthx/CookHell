@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class DeliveryCounter : BaseCounter
 {
+    new public static void ResetStaticData()
+    {
+        OnAnyObjectDelivered = null;
+    }
+
     public static DeliveryCounter Instance { get; private set; }
 
-    public event EventHandler OnAnyObjectDelivered;
+    public static event EventHandler OnAnyObjectDelivered;
 
     private void Awake()
     {

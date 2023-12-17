@@ -51,14 +51,14 @@ public class SoundManager : MonoBehaviour
 
     private void DeliveryManager_OnRecipeSuccess(object sender, EventArgs e)
     {
-        DeliveryCounter deliveryCounter = DeliveryCounter.Instance;
-        PlaySound(audioClipRefsSO.deliveryFail, deliveryCounter.transform.position);
+        DeliveryCounter deliveryCounter = DeliveryCounter.Instance;        
+        PlaySound(audioClipRefsSO.deliverySuccess, deliveryCounter.transform.position);
     }
 
     private void DeliveryManager_OnRecipeFailed(object sender, EventArgs e)
     {
-        DeliveryCounter deliveryCounter = DeliveryCounter.Instance;
-        PlaySound(audioClipRefsSO.deliverySuccess, deliveryCounter.transform.position);
+        DeliveryCounter deliveryCounter = DeliveryCounter.Instance;        
+        PlaySound(audioClipRefsSO.deliveryFail, deliveryCounter.transform.position, volume);
     }
 
     public void PlaySoundFootstepsSound(Vector3 position, float volume)

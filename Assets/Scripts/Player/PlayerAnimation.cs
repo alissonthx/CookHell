@@ -19,6 +19,13 @@ public class PlayerAnimation : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        Player.Instance.OnPickedSomething += Player_OnPickedSomething;
+        BaseCounter.OnAnyObjectPlacedHere += BaseCounter_OnAnyObjectPlacedHere;
+        DeliveryCounter.OnAnyObjectDelivered += DeliveryCounter_OnAnyObjectDelivered;
+    }
+
     private void Player_OnPickedSomething(object sender, EventArgs e)
     {
         anim.SetTrigger(GRAB);
@@ -63,16 +70,10 @@ public class PlayerAnimation : MonoBehaviour
         knife.SetActive(false);
     }
 
-    private void OnEnable()
-    {
-        Player.Instance.OnPickedSomething += Player_OnPickedSomething;
-        BaseCounter.OnAnyObjectPlacedHere += BaseCounter_OnAnyObjectPlacedHere;
-        DeliveryCounter.Instance.OnAnyObjectDelivered += DeliveryCounter_OnAnyObjectDelivered;
-    }
     private void OnDisable()
     {
         Player.Instance.OnPickedSomething -= Player_OnPickedSomething;
         BaseCounter.OnAnyObjectPlacedHere -= BaseCounter_OnAnyObjectPlacedHere;
-        DeliveryCounter.Instance.OnAnyObjectDelivered -= DeliveryCounter_OnAnyObjectDelivered;
+        DeliveryCounter.OnAnyObjectDelivered -= DeliveryCounter_OnAnyObjectDelivered;
     }
 }
