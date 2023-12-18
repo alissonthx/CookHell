@@ -24,6 +24,7 @@ public class PlayerAnimation : MonoBehaviour
         Player.Instance.OnPickedSomething += Player_OnPickedSomething;
         BaseCounter.OnAnyObjectPlacedHere += BaseCounter_OnAnyObjectPlacedHere;
         DeliveryCounter.OnAnyObjectDelivered += DeliveryCounter_OnAnyObjectDelivered;
+        CuttingCounter.OnAnyCut += CuttingCounter_OnAnyCut;
     }
 
     private void Player_OnPickedSomething(object sender, EventArgs e)
@@ -75,5 +76,6 @@ public class PlayerAnimation : MonoBehaviour
         Player.Instance.OnPickedSomething -= Player_OnPickedSomething;
         BaseCounter.OnAnyObjectPlacedHere -= BaseCounter_OnAnyObjectPlacedHere;
         DeliveryCounter.OnAnyObjectDelivered -= DeliveryCounter_OnAnyObjectDelivered;
+        CuttingCounter.OnAnyCut -= CuttingCounter_OnAnyCut;
     }
 }
