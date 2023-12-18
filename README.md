@@ -1,4 +1,4 @@
-<h1 align="center"> CookHell 🥫:</h1>
+<h1 align="center"> CookHell 🍔 </h1>
 <a href=""><img src="./Assets/img/game-img.png" alt="" /></a>
 <p align="center"> Overcooked inspired 3D game.</p>
 
