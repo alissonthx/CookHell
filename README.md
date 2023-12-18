@@ -2,7 +2,7 @@
 <a href=""><img src="./Assets/img/game-img.png" alt="" /></a>
 <p align="center"> Overcooked inspired 3D game.</p>
 
-<img src="./Assets/Gifs/CookHellItchPage.gif">
+<a href="https://tempestdeveloper.itch.io/cook-hell"><img src="./Assets/Gifs/CookHellItchPage.gif"></a>
 
 <h2>🚀 Technologies</h2>
 <ul>
